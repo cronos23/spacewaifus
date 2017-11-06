@@ -4,6 +4,8 @@
 #include "ship.hh"
 #include "starsystem.hh"
 #include "ieventhandler.hh"
+#include <gameexception.hh>
+
 namespace Student {
 
 class Galaxy : public Common::IGalaxy, public std::enable_shared_from_this<Galaxy>
@@ -28,7 +30,7 @@ public:
     std::shared_ptr<Common::StarSystem> getStarSystemById(unsigned id);
 
 private:
-
+    ShipVector ships_in_the_galaxy_;
 };
 }//Student
 

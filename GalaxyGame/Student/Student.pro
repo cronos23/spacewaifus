@@ -15,11 +15,13 @@ CONFIG += c++14
 
 SOURCES += \
     main.cc\
+    mainwindow.cpp
 
 HEADERS  += \
     galaxy.hh \
     eventhandler.hh \
-    statistics.hh
+    statistics.hh \
+    mainwindow.hh
 
 INCLUDEPATH += $$PWD/../Course
 DEPENDPATH += $$PWD/../Course
@@ -53,3 +55,6 @@ LIBS += -L$$OUT_PWD/../Course/$${DESTDIR}/ -lCourse
 
 QMAKE_EXTRA_TARGETS += copyfiles
 POST_TARGETDEPS += copyfiles
+
+FORMS += \
+    mainwindow.ui

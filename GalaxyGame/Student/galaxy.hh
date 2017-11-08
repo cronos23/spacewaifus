@@ -4,7 +4,8 @@
 #include "ship.hh"
 #include "starsystem.hh"
 #include "ieventhandler.hh"
-#include <gameexception.hh>
+#include "stateexception.hh"
+#include <algorithm>
 
 namespace Student {
 

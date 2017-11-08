@@ -1,20 +1,28 @@
 #include "galaxy.hh"
+
 namespace Student {
-    virtual void addShip(std::shared_ptr<Common::Ship> ship) {
+
+    void Galaxy::addShip(std::shared_ptr<Common::Ship> ship) {
+
         if ( std::find(ships_in_the_galaxy_.begin(),
                        ships_in_the_galaxy_.end(), ship) != ships_in_the_galaxy_.end() ) {
             throw Common::StateException("Ship already exists in the galaxy");
-        }
-        else {
+
+        } else {
             ships_in_the_galaxy_.push_back(ship);
         }
 }
 
-    virtual void removeShip(std::shared_ptr<Common::Ship> ship){
+    virtual void Galaxy::removeShip(std::shared_ptr<Common::Ship> ship){
 
+        if ( std::find(ships_in_the_galaxy_.begin(),
+                       ships_in_the_galaxy_.end(), ship) != ships_in_the_galaxy_.end() ) {
+            ships_in_the_galaxy_.erase( std::find(ships_in_the_galaxy_.begin(),
+                                                  ships_in_the_galaxy_.end(), ship));
+        }
 }
 
-    virtual void addStarSystem(std::shared_ptr<Common::StarSystem> starSystem){
+    virtual void Galaxy::addStarSystem(std::shared_ptr<Common::StarSystem> starSystem){
 
 }
 
@@ -22,28 +30,28 @@ namespace Student {
 
 }
 
-    virtual Common::StarSystem::StarSystemVector getSystemsInRange
+    virtual Common::StarSystem::StarSystemVector Galaxy::getSystemsInRange
     (std::shared_ptr<Common::StarSystem> origin, int range) {
 
 }
 
-    virtual std::shared_ptr<Common::StarSystem> getRandomSystem() {
+    virtual std::shared_ptr<Common::StarSystem> Galaxy::getRandomSystem() {
 
 }
 
-    ShipVector getShipsInStarSystem(std::string name) {
+    ShipVector Galaxy::getShipsInStarSystem(std::string name) {
 
 }
 
-    std::vector<std::string> getSystemNames() {
+    std::vector<std::string> Galaxy::getSystemNames() {
 
 }
 
-    std::shared_ptr<Common::StarSystem> getStarSystemByName(std::string name) {
+    std::shared_ptr<Common::StarSystem> Galaxy::getStarSystemByName(std::string name) {
 
 }
 
-    std::shared_ptr<Common::StarSystem> getStarSystemById(unsigned id) {
+    std::shared_ptr<Common::StarSystem> Galaxy::getStarSystemById(unsigned id) {
 
 }
 

@@ -5,6 +5,7 @@
 #include "starsystem.hh"
 #include "ieventhandler.hh"
 #include "stateexception.hh"
+#include "objectnotfoundexception.hh"
 #include <algorithm>
 
 namespace Student {
@@ -32,6 +33,7 @@ public:
 
 private:
     ShipVector ships_in_the_galaxy_;
+    Common::StarSystem::StarSystemVector starsystems_in_the_galaxy_;
 };
 }//Student
 

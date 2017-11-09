@@ -1,8 +1,18 @@
-#include eventhandler.hh
+#include "eventhandler.hh"
 
 namespace Student {
 
-    void EventHandler::shipSpawned(std::shared_ptr<Common::Ship> ship)
+EventHandler::EventHandler()
+{
+
+}
+
+EventHandler::~EventHandler()
+{
+
+}
+
+void EventHandler::shipSpawned(std::shared_ptr<Common::Ship> ship)
     {
 
     }

@@ -2,6 +2,17 @@
 
 namespace Student {
 
+
+Galaxy::Galaxy()
+{
+
+}
+
+Galaxy::~Galaxy()
+{
+
+}
+
 void Galaxy::addShip(std::shared_ptr<Common::Ship> ship) {
 
     if ( std::find(ships_in_the_galaxy_.begin(),

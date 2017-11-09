@@ -18,8 +18,7 @@ SOURCES += \
     galaxy.cc \
     statistics.cc \
     eventhandler.cc \
-    mainwindow.cpp \
-    statistics.cc
+    mainwindow.cpp
 
 HEADERS  += \
     galaxy.hh \

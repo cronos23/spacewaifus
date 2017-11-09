@@ -60,7 +60,8 @@ Common::StarSystem::StarSystemVector Galaxy::getSystemsInRange
 
     for ( auto vectorstarSystem:starsystems_in_the_galaxy_ ) {
 
-        if ( origin->getCoordinates().distanceTo( vectorstarSystem->getCoordinates() ) <= range ) {
+        if ( origin->getCoordinates().distanceTo( vectorstarSystem->getCoordinates() ) <= range
+             && origin != vectorstarSystem ) {
             systems_in_range.push_back( vectorstarSystem );
         }
     }

@@ -2,6 +2,7 @@
 #define STATISTICS_HH
 
 #include "istatistics.hh"
+#include "stateexception.hh"
 namespace Student {
 
 class Statistics : public Common::IStatistics
@@ -24,6 +25,10 @@ public:
      int getCreditBalance() const;
 
 private:
+    int credits_;
+    ShipVector graveyard_;
+    unsigned int points_;
+
 
 };
 }//Student

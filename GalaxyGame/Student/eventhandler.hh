@@ -2,6 +2,7 @@
 #define EVENTHANDLER_HH
 #include "point.hh"
 #include "ieventhandler.hh"
+
 namespace Student {
 class EventHandler: public Common::IEventHandler
 {

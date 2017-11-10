@@ -4,16 +4,13 @@ namespace Student {
 
 EventHandler::EventHandler()
 {
-
 }
 
 EventHandler::~EventHandler()
 {
-
 }
 
-void EventHandler::shipSpawned(std::shared_ptr<Common::Ship> ship)
-{
+void EventHandler::shipSpawned(std::shared_ptr<Common::Ship> ship) {
 
 }
 

@@ -3,6 +3,7 @@
 
 #include "istatistics.hh"
 #include "stateexception.hh"
+
 namespace Student {
 
 class Statistics : public Common::IStatistics
@@ -26,8 +27,10 @@ public:
 
 private:
     int credits_;
-    ShipVector graveyard_;
+    unsigned graveyard_;
+    unsigned saved_;
     unsigned int points_;
+    unsigned MAX_LOAN_ALLOWANCE = 1000;
 
 
 };

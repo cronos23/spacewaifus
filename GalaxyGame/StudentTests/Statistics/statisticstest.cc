@@ -1,6 +1,8 @@
+#include "statistics.hh"
 #include <QString>
 #include <QtTest>
-#include "statistics.hh"
+#include <memory>
+
 class StatisticsTest : public QObject
 {
     Q_OBJECT
@@ -9,17 +11,14 @@ public:
     StatisticsTest();
 
 private Q_SLOTS:
-    void testCase1();
+    void init();
 };
 
-StatisticsTest::StatisticsTest()
-{
+StatisticsTest::StatisticsTest() {
 }
 
 
-void StatisticsTest::testCase1()
-{
-    QVERIFY2(true, "Failure");
+void StatisticsTest::init() {
 }
 
 QTEST_APPLESS_MAIN(StatisticsTest)

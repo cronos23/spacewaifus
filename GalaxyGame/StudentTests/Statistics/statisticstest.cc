@@ -15,9 +15,9 @@ public:
 
 private Q_SLOTS:
     void init();
-//    void testCase1();
+    void testCase1();
     void testReducePointsBelowZero();
-
+    void testReduceCreditsBelowMaxLoan();
 };
 
 StatisticsTest::StatisticsTest() {
@@ -32,6 +32,13 @@ void StatisticsTest::testReducePointsBelowZero()
     Statistics test;
     test.addPoints(10);
     QVERIFY_EXCEPTION_THROWN(test.reducePoints(20), StateException);
+}
+
+void StatisticsTest::testReduceCreditsBelowMaxLoan()
+{
+    Statistics test;
+    QVERIFY_EXCEPTION_THROWN(test.reduceCredits(1001), StateException);
+
 }
 
 

@@ -15,10 +15,6 @@ void player_ship::keyPressEvent(QKeyEvent *event) {
     }
 }
 
-void player_ship::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-    this->setFocus();
-}
-
 QRectF player_ship::boundingRect() const {
     return QRectF(0, 0, 100, 100);
 }

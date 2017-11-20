@@ -15,7 +15,7 @@ public:
 
 private Q_SLOTS:
     void init();
-    void testCase1();
+//    void testCase1();
     void testReducePointsBelowZero();
     void testReduceCreditsBelowMaxLoan();
 };

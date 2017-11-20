@@ -3,8 +3,15 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
-#include "player_ship.hh"
+#include <QTransform>
+#include "eventhandler.hh"
 #include "galaxy.hh"
+#include "gamerunner.hh"
+#include "igamerunner.hh"
+#include "initialize.hh"
+#include "player_ship.hh"
+#include "starsystemobject.hh"
+#include "utility.hh"
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +30,9 @@ private:
 
     QGraphicsScene *scene;
     player_ship *ship;
+    std::shared_ptr<Common::IEventHandler> handler;
+    std::shared_ptr<Student::Galaxy> galaxy;
+    std::shared_ptr<Common::IGameRunner> gameRunner;
 };
 
 #endif // MAINWINDOW_HH

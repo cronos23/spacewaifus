@@ -1,5 +1,7 @@
+#include "statistics.hh"
 #include <QString>
 #include <QtTest>
+#include <memory>
 #include "statistics.hh"
 #include "stateexception.hh"
 using namespace Student;
@@ -12,20 +14,17 @@ public:
     StatisticsTest();
 
 private Q_SLOTS:
-    void testCase1();
+    void init();
+//    void testCase1();
     void testReducePointsBelowZero();
-    void testReduceCreditsBelowMaxLoan();
-    //void testLoanBalance();
+
 };
 
-StatisticsTest::StatisticsTest()
-{
+StatisticsTest::StatisticsTest() {
 }
 
 
-void StatisticsTest::testCase1()
-{
-    QVERIFY2(true, "Failure");
+void StatisticsTest::init() {
 }
 
 void StatisticsTest::testReducePointsBelowZero()
@@ -34,20 +33,6 @@ void StatisticsTest::testReducePointsBelowZero()
     test.addPoints(10);
     QVERIFY_EXCEPTION_THROWN(test.reducePoints(20), StateException);
 }
-
-void StatisticsTest::testReduceCreditsBelowMaxLoan()
-{
-    Statistics test;
-    QVERIFY_EXCEPTION_THROWN(test.reduceCredits(1001), StateException);
-
-}
-
-//void StatisticsTest::testLoanBalance()
-//{
-//    Statistics test;
-//    test.reduceCredits(900);
-//    QVERIFY(test.getCreditBalance() == -900);
-//}
 
 
 QTEST_APPLESS_MAIN(StatisticsTest)

@@ -1,7 +1,9 @@
 #ifndef EVENTHANDLER_HH
 #define EVENTHANDLER_HH
+#include <QObject>
 #include "point.hh"
 #include "ieventhandler.hh"
+#include "galaxy.hh"
 
 namespace Student {
 class EventHandler: public Common::IEventHandler

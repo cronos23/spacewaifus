@@ -18,13 +18,17 @@ SOURCES += \
     galaxy.cc \
     statistics.cc \
     eventhandler.cc \
-    mainwindow.cpp
+    mainwindow.cpp \
+    player_ship.cpp \
+    starsystemobject.cpp
 
 HEADERS  += \
     galaxy.hh \
     eventhandler.hh \
     statistics.hh \
-    mainwindow.hh
+    mainwindow.hh \
+    player_ship.hh \
+    starsystemobject.hh
 
 INCLUDEPATH += $$PWD/../Course
 DEPENDPATH += $$PWD/../Course

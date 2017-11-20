@@ -2,6 +2,9 @@
 #define MAINWINDOW_HH
 
 #include <QMainWindow>
+#include <QGraphicsScene>
+#include "player_ship.hh"
+#include "galaxy.hh"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +20,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QGraphicsScene *scene;
+    player_ship *ship;
 };
 
 #endif // MAINWINDOW_HH

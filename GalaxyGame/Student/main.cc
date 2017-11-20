@@ -3,6 +3,7 @@
 #include "igamerunner.hh"
 #include "utility.hh"
 #include "eventhandler.hh"
+#include "mainwindow.hh"
 #include <QApplication>
 #include <memory>
 #include <time.h>
@@ -15,6 +16,10 @@ int main(int argc, char *argv[])
     std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
     std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
     Common::utilityInit(time(NULL));
+
+    MainWindow mainWin;
+    mainWin.show();
+
 
     return a.exec();
 }

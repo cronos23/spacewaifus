@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     QGraphicsScene * scene = new QGraphicsScene();
+    scene->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
 
     std::vector<std::string> starSystemNames = galaxy->getSystemNames();
 
@@ -21,14 +22,20 @@ MainWindow::MainWindow(QWidget *parent) :
         std::shared_ptr<Common::StarSystem> currentStarSystem = galaxy->getStarSystemByName(starSystemName);
         Common::Point coords = currentStarSystem->getCoordinates();
         starsystemobject * starSystem = new starsystemobject;
-        starSystem->setRect(coords.x * 100, coords.y * 100, 100, 100);
+        int population = currentStarSystem->getPopulation();
+        starSystem->setSizeByPop(population);
+        starSystem->setOpacity(1);
+
+        starSystem->setPen(QPen(Qt::yellow));
+        starSystem->setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
+        starSystem->setRect(coords.x * 200, coords.y * 200, starSystem->getSize(), starSystem->getSize());
         scene->addItem(starSystem);
     }
 
 
     player_ship * ship = new player_ship();
-    ship->setRect(0,0,100,100);
-    ship->setTransformOriginPoint(50,50);
+    ship->setRect(0,0,30,20);
+    ship->setTransformOriginPoint(15,10);
 
     scene->addItem(ship);
     scene->setStickyFocus(true);
@@ -36,6 +43,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ship->setFlag(QGraphicsItem::ItemIsFocusable);
     ship->setFocus();
 
+   // ui->graphicsView->setTransformationAnchor(GraphicsViewControls::AnchorUnderMouse);
+    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setScene(scene);
 }
 

@@ -7,6 +7,7 @@
 #include "eventhandler.hh"
 #include "galaxy.hh"
 #include "gamerunner.hh"
+#include "graphicsviewcontrols.hh"
 #include "igamerunner.hh"
 #include "initialize.hh"
 #include "player_ship.hh"

@@ -16,7 +16,7 @@ void player_ship::keyPressEvent(QKeyEvent *event) {
 }
 
 QRectF player_ship::boundingRect() const {
-    return QRectF(0, 0, 100, 100);
+    return QRectF(0, 0, 30, 20);
 }
 
 void player_ship::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {

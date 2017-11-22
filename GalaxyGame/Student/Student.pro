@@ -20,7 +20,8 @@ SOURCES += \
     eventhandler.cc \
     mainwindow.cpp \
     player_ship.cpp \
-    starsystemobject.cpp
+    starsystemobject.cpp \
+    mainmenu.cpp
 
 HEADERS  += \
     galaxy.hh \
@@ -28,7 +29,8 @@ HEADERS  += \
     statistics.hh \
     mainwindow.hh \
     player_ship.hh \
-    starsystemobject.hh
+    starsystemobject.hh \
+    mainmenu.hh
 
 INCLUDEPATH += $$PWD/../Course
 DEPENDPATH += $$PWD/../Course
@@ -64,4 +66,5 @@ QMAKE_EXTRA_TARGETS += copyfiles
 POST_TARGETDEPS += copyfiles
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    mainmenu.ui

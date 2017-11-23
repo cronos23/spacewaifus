@@ -7,13 +7,16 @@
 #include <QApplication>
 #include <memory>
 #include <time.h>
+#include "mainmenu.hh"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
     MainWindow mainWin;
-    mainWin.show();
+    mainmenu mainMenu;
+    //mainWin.show();
+    mainMenu.show();
 
 
     return a.exec();

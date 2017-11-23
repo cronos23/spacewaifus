@@ -15,6 +15,9 @@ public:
     explicit mainmenu(QWidget *parent = 0);
     ~mainmenu();
 
+public slots:
+    void newGame();
+
 private:
     Ui::mainmenu *ui;
 };

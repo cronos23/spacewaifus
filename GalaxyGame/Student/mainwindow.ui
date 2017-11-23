@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1832</width>
-    <height>1052</height>
+    <width>1876</width>
+    <height>902</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1191</width>
-      <height>1011</height>
+      <width>1521</width>
+      <height>861</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -88,9 +88,12 @@
      <rect>
       <x>1710</x>
       <y>10</y>
-      <width>71</width>
-      <height>31</height>
+      <width>91</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="digitCount">
+     <number>6</number>
     </property>
    </widget>
    <widget class="QLabel" name="credits_label">
@@ -118,16 +121,25 @@
      <rect>
       <x>1710</x>
       <y>70</y>
-      <width>71</width>
-      <height>31</height>
+      <width>91</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="digitCount">
+     <number>6</number>
+    </property>
+    <property name="value" stdset="0">
+     <double>0.000000000000000</double>
     </property>
    </widget>
    <widget class="QLabel" name="controls_label">
     <property name="geometry">
      <rect>
-      <x>1640</x>
-      <y>180</y>
+      <x>1620</x>
+      <y>530</y>
       <width>121</width>
       <height>51</height>
      </rect>
@@ -146,8 +158,8 @@
    <widget class="QLabel" name="turn_label">
     <property name="geometry">
      <rect>
-      <x>1620</x>
-      <y>230</y>
+      <x>1600</x>
+      <y>580</y>
       <width>211</width>
       <height>31</height>
      </rect>
@@ -159,8 +171,8 @@
    <widget class="QLabel" name="forward_label">
     <property name="geometry">
      <rect>
-      <x>1620</x>
-      <y>270</y>
+      <x>1600</x>
+      <y>620</y>
       <width>171</width>
       <height>21</height>
      </rect>
@@ -169,24 +181,11 @@
      <string>Up Arrow Key: Forward</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>1620</x>
-      <y>300</y>
-      <width>181</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Down Arrow Key: Backward</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Quit_Button">
     <property name="geometry">
      <rect>
-      <x>1620</x>
-      <y>670</y>
+      <x>1740</x>
+      <y>790</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -202,6 +201,84 @@
      <string>Quit Game</string>
     </property>
    </widget>
+   <widget class="QLabel" name="saved_label">
+    <property name="geometry">
+     <rect>
+      <x>1570</x>
+      <y>200</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ships Saved</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="saved_LCD">
+    <property name="geometry">
+     <rect>
+      <x>1710</x>
+      <y>190</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="digitCount">
+     <number>6</number>
+    </property>
+    <property name="value" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lost_label">
+    <property name="geometry">
+     <rect>
+      <x>1590</x>
+      <y>270</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ships Lost</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lost_LCD">
+    <property name="geometry">
+     <rect>
+      <x>1710</x>
+      <y>270</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="digitCount">
+     <number>6</number>
+    </property>
+    <property name="value" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
@@ -213,5 +290,22 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>Quit_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1780</x>
+     <y>810</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1838</x>
+     <y>763</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

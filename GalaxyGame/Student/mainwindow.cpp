@@ -3,7 +3,9 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    ship_(new player_ship),
+    timer_(new QTimer)
 {
 
     std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
@@ -33,22 +35,34 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
 
-    player_ship * ship = new player_ship();
-    ship->setRect(0,0,30,20);
-    ship->setTransformOriginPoint(15,10);
+    ship_->setRect(0,0,30,20);
+    ship_->setTransformOriginPoint(15,10);
 
-    scene->addItem(ship);
+    scene->addItem(ship_);
     scene->setStickyFocus(true);
+//    scene->setSceneRect(0,0,00,2000);
 
-    ship->setFlag(QGraphicsItem::ItemIsFocusable);
-    ship->setFocus();
+    ship_->setFlag(QGraphicsItem::ItemIsFocusable);
+    ship_->setFocus();
 
-   // ui->graphicsView->setTransformationAnchor(GraphicsViewControls::AnchorUnderMouse);
+//    ui->graphicsView->setResizeAnchor(GraphicsViewControls::AnchorUnderMouse);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+//    ui->graphicsView->setSceneRect(0,0,200,200);
     ui->graphicsView->setScene(scene);
+    QObject::connect(timer_, &QTimer::timeout , this, &MainWindow::followShip );
+    timer_->start(10);
+
 }
 
 MainWindow::~MainWindow()
 {
+    delete timer_;
+    delete ship_;
     delete ui;
 }
+
+void MainWindow::followShip() {
+//    ui->graphicsView->ensureVisible(ui->graphicsView->sceneRect(), 50, 50);
+    ui->graphicsView->centerOn(ship_);
+}
+

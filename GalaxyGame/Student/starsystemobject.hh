@@ -2,10 +2,11 @@
 #define STARSYSTEMOBJECT_HH
 
 #include <QGraphicsEllipseItem>
+#include <QObject>
 #include <QPainter>
 #include <vector>
 
-class starsystemobject: public QGraphicsEllipseItem {
+class starsystemobject: public QObject, public QGraphicsEllipseItem {
 
 public:
 

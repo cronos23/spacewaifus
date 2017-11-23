@@ -24,3 +24,4 @@ void player_ship::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     Q_UNUSED(widget);
     painter->fillRect(boundingRect(), Qt::red);
 }
+

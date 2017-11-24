@@ -71,4 +71,5 @@ POST_TARGETDEPS += copyfiles
 
 FORMS += \
     mainwindow.ui \
-    mainmenu.ui
+    mainmenu.ui \
+    controls.ui

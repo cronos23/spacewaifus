@@ -26,7 +26,6 @@ SOURCES += \
 
 
 
-
 HEADERS  += \
     galaxy.hh \
     eventhandler.hh \

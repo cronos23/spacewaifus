@@ -8,12 +8,16 @@
 #include <algorithm>
 #include <iostream>
 
-class player_ship: public QGraphicsRectItem {
+class player_ship: public QObject, public QGraphicsRectItem {
+Q_OBJECT
 
 public:
     void keyPressEvent(QKeyEvent * event);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
+signals:
+    void shipMoved();
 
 };
 

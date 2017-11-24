@@ -2,6 +2,7 @@
 #define MAINMENU_HH
 
 #include <QWidget>
+#include "mainwindow.hh"
 
 namespace Ui {
 class mainmenu;
@@ -20,6 +21,8 @@ public slots:
 
 private:
     Ui::mainmenu *ui;
+    MainWindow *mainWin;
+
 };
 
 #endif // MAINMENU_HH

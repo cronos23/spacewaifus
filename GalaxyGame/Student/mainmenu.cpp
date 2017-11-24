@@ -1,25 +1,26 @@
 #include "mainmenu.hh"
-#include "mainwindow.hh"
 #include "ui_mainmenu.h"
+
 
 mainmenu::mainmenu(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::mainmenu)
+    ui(new Ui::mainmenu),
+    mainWin(new MainWindow)
 {
     ui->setupUi(this);
 
-    connect(ui->play_button, SIGNAL(triggered(bool)),
-            this, SLOT(newGame()));
+    QObject::connect(ui->play_button, &QPushButton::clicked,
+            this, &mainmenu::newGame);
 }
 
 mainmenu::~mainmenu()
 {
     delete ui;
+    delete mainWin;
 }
 
 void mainmenu::newGame()
 {
-    MainWindow mainWin;
-    mainWin.show();
+    mainWin->show();
     this->close();
 }

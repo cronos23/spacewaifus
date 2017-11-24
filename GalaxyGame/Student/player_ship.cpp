@@ -13,6 +13,7 @@ void player_ship::keyPressEvent(QKeyEvent *event) {
 
         setPos(x()-cos(this->rotation()*3.14/180)*8,y()-sin(this->rotation()*3.14/180)*8);
     }
+    emit shipMoved();
 }
 
 QRectF player_ship::boundingRect() const {
@@ -24,4 +25,5 @@ void player_ship::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     Q_UNUSED(widget);
     painter->fillRect(boundingRect(), Qt::red);
 }
+
 

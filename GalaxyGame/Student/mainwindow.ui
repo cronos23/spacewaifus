@@ -29,14 +29,17 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
+     <enum>Qt::ScrollBarAsNeeded</enum>
     </property>
     <property name="horizontalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
+     <enum>Qt::ScrollBarAsNeeded</enum>
     </property>
     <property name="sizeAdjustPolicy">
-     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
     </property>
     <property name="interactive">
      <bool>true</bool>
@@ -49,17 +52,17 @@
       <height>0.000000000000000</height>
      </rectf>
     </property>
-    <property name="renderHints">
-     <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
-    </property>
     <property name="dragMode">
-     <enum>QGraphicsView::NoDrag</enum>
+     <enum>QGraphicsView::ScrollHandDrag</enum>
     </property>
     <property name="transformationAnchor">
      <enum>QGraphicsView::NoAnchor</enum>
     </property>
     <property name="viewportUpdateMode">
      <enum>QGraphicsView::FullViewportUpdate</enum>
+    </property>
+    <property name="optimizationFlags">
+     <set>QGraphicsView::DontAdjustForAntialiasing</set>
     </property>
    </widget>
    <widget class="QLabel" name="score_label">

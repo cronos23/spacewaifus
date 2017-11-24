@@ -21,11 +21,9 @@ SOURCES += \
     mainwindow.cpp \
     player_ship.cpp \
     starsystemobject.cpp \
-<<<<<<< HEAD
-    graphicsviewcontrols.cpp
-=======
+    graphicsviewcontrols.cpp \
     mainmenu.cpp
->>>>>>> c2c7346c7b86b123dd9485e004d1799faba70bb0
+
 
 HEADERS  += \
     galaxy.hh \
@@ -34,11 +32,9 @@ HEADERS  += \
     mainwindow.hh \
     player_ship.hh \
     starsystemobject.hh \
-<<<<<<< HEAD
-    graphicsviewcontrols.hh
-=======
+    graphicsviewcontrols.hh \
     mainmenu.hh
->>>>>>> c2c7346c7b86b123dd9485e004d1799faba70bb0
+
 
 INCLUDEPATH += $$PWD/../Course
 DEPENDPATH += $$PWD/../Course

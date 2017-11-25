@@ -22,7 +22,8 @@ SOURCES += \
     player_ship.cpp \
     starsystemobject.cpp \
     mainmenu.cpp\
-    graphicsviewcontrols.cpp
+    graphicsviewcontrols.cpp \
+    controls.cpp
 
 
 
@@ -34,7 +35,8 @@ HEADERS  += \
     player_ship.hh \
     starsystemobject.hh \
     mainmenu.hh\
-    graphicsviewcontrols.hh
+    graphicsviewcontrols.hh \
+    controls.hh
 
 
 

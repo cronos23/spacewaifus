@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "mainwindow.hh"
+#include "controls.hh"
 
 namespace Ui {
 class mainmenu;
@@ -18,10 +19,12 @@ public:
 
 public slots:
     void newGame();
+    void openControls();
 
 private:
     Ui::mainmenu *ui;
     MainWindow *mainWin;
+    controls *controlsWin;
 
 };
 

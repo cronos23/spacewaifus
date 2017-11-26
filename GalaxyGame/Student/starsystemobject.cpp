@@ -21,3 +21,7 @@ void starsystemobject::setSizeByPop(int population) {
 int starsystemobject::getSize() {
     return starsystemsize_;
 }
+
+void starsystemobject::setStarSystem(std::shared_ptr<Common::StarSystem> starSystem) {
+    starsystemptr_ = starSystem;
+}

@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
         starsystemobject * starSystem = new starsystemobject;
         int population = currentStarSystem->getPopulation();
         starSystem->setSizeByPop(population);
+        starSystem->setStarSystem(currentStarSystem);
         starSystem->setOpacity(1);
 
         starSystem->setPen(QPen(Qt::white));

@@ -20,13 +20,13 @@ void player_ship::keyPressEvent(QKeyEvent *event) {
     }
 }
 
-QRectF player_ship::boundingRect() const {
-    return QRectF(0, 0, 30, 20);
-}
+//QRectF player_ship::boundingRect() const {
+//    return QRectF(0, 0, 30, 20);
+//}
 
-void player_ship::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    Q_UNUSED(option);
-    Q_UNUSED(widget);
-    painter->fillRect(boundingRect(), Qt::red);
-}
+//void player_ship::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+//    Q_UNUSED(option);
+//    Q_UNUSED(widget);
+//    painter->fillRect(boundingRect(), Qt::red);
+//}
 

@@ -14,8 +14,8 @@ Q_OBJECT
 
 public:
     void keyPressEvent(QKeyEvent * event);
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+//    QRectF boundingRect() const;
+//    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 signals:
     void shipMoved();

@@ -10,6 +10,11 @@
     <height>897</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <kerning>true</kerning>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Dream Ships</string>
   </property>
@@ -175,10 +180,14 @@
       <pointsize>14</pointsize>
       <weight>50</weight>
       <bold>false</bold>
+      <kerning>true</kerning>
      </font>
     </property>
     <property name="text">
      <string>Ships dated</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLCDNumber" name="saved_LCD">

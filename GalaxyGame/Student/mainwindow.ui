@@ -119,6 +119,9 @@
     <property name="text">
      <string>Credits</string>
     </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLCDNumber" name="credits_LCD">
     <property name="geometry">

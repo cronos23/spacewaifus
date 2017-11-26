@@ -24,6 +24,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>36</pointsize>
     </font>
    </property>
@@ -39,12 +40,13 @@
     <rect>
      <x>350</x>
      <y>240</y>
-     <width>161</width>
+     <width>171</width>
      <height>91</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>22</pointsize>
     </font>
    </property>
@@ -57,12 +59,13 @@
     <rect>
      <x>350</x>
      <y>390</y>
-     <width>161</width>
+     <width>171</width>
      <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>18</pointsize>
     </font>
    </property>
@@ -75,12 +78,13 @@
     <rect>
      <x>350</x>
      <y>500</y>
-     <width>161</width>
+     <width>171</width>
      <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>18</pointsize>
     </font>
    </property>
@@ -99,6 +103,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>15</pointsize>
     </font>
    </property>

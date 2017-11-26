@@ -10,6 +10,12 @@
     <height>702</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Controls and Tips</string>
   </property>
@@ -24,9 +30,10 @@
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>22</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
@@ -47,9 +54,10 @@
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>18</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
@@ -67,6 +75,11 @@
      <width>301</width>
      <height>141</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Serif</family>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Up arrow key - Move forward&lt;/p&gt;&lt;p&gt;Left/Right arrow key - Turn&lt;/p&gt;&lt;p&gt;Mouse wheel - Zoom&lt;/p&gt;&lt;p&gt;Click and drag with mouse - Move the map&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -86,9 +99,10 @@
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>18</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
@@ -106,6 +120,11 @@
      <width>701</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Serif</family>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game blablabla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -125,9 +144,10 @@
    </property>
    <property name="font">
     <font>
+     <family>Serif</family>
      <pointsize>20</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">

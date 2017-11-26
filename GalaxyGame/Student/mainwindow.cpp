@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
 
-    //ship_->setRect(0,0,30,20);
+    ship_->setRect(0,0,30,20);
     ship_->setTransformOriginPoint(15,10);
 
     scene->addItem(ship_);

@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QTransform>
+#include <vector>
 #include "eventhandler.hh"
 #include "galaxy.hh"
 #include "gamerunner.hh"
@@ -30,14 +31,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
     player_ship *ship_;
     std::shared_ptr<Common::IEventHandler> handler;
     std::shared_ptr<Student::Galaxy> galaxy;
     std::shared_ptr<Common::IGameRunner> gameRunner;
 
-public slots:
+private slots:
     void followShip();
+    void checkCollision();
 };
 
 #endif // MAINWINDOW_HH

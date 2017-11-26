@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
         starSystem->setSizeByPop(population);
         starSystem->setOpacity(1);
 
-        starSystem->setPen(QPen(Qt::yellow));
+        starSystem->setPen(QPen(Qt::white));
         starSystem->setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
         starSystem->setRect(coords.x * 200, coords.y * 200, starSystem->getSize(), starSystem->getSize());
         scene->addItem(starSystem);
@@ -49,7 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
 //    ui->graphicsView->setSceneRect(0, 0, 800, 800);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
-    QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip );
+    QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
+    QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
 
 }
 
@@ -64,3 +65,12 @@ void MainWindow::followShip() {
     ui->graphicsView->ensureVisible(ship_, 100, 100);
 }
 
+void MainWindow::checkCollision() {
+//    std::string waifu_type = ship_->collidingItems()[0];
+//    ui->graphicsView->setViewportUpdateMode(QGraphicsView::NoViewportUpdate);
+//    ui->graphicsView->setFocus();
+//    launch dialog
+//    ui->graphicsView->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+//    ship_->setFocus();
+    std::cout << "kutsuit mua lul" << std::endl;
+}

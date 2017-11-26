@@ -54,7 +54,7 @@ Common::StarSystem::StarSystemVector Galaxy::getSystemsInRange
 
     if ( std::find(starsystems_in_the_galaxy_.begin(),
                    starsystems_in_the_galaxy_.end(), origin) == starsystems_in_the_galaxy_.end() ) {
-        throw Common::ObjectNotFoundException("Star System does not exist"); // Voiko tätä käyttää jotenkin GameExceptionin kautta?
+        throw Common::ObjectNotFoundException("Star System does not exist");
     }
     Common::StarSystem::StarSystemVector systems_in_range;
 

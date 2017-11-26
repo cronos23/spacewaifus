@@ -11,6 +11,7 @@ class EventHandler: public Common::IEventHandler
 public:
     EventHandler();
     ~EventHandler();
+signals:
     void shipSpawned(std::shared_ptr<Common::Ship> ship);
     void shipRemoved(std::shared_ptr<Common::Ship> ship);
     void shipRelocated(std::shared_ptr<Common::Ship> ship,

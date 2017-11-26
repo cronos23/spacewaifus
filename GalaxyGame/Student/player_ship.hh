@@ -18,6 +18,7 @@ public:
 
 signals:
     void shipMoved();
+    void shipCollides();
 
 };
 

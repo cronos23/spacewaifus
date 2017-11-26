@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1876</width>
-    <height>902</height>
+    <width>1692</width>
+    <height>897</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Dream Ships</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="GraphicsViewControls" name="graphicsView">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1521</width>
-      <height>861</height>
+      <width>1411</width>
+      <height>871</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -68,7 +68,7 @@
    <widget class="QLabel" name="score_label">
     <property name="geometry">
      <rect>
-      <x>1620</x>
+      <x>1490</x>
       <y>10</y>
       <width>81</width>
       <height>31</height>
@@ -89,7 +89,7 @@
    <widget class="QLCDNumber" name="score_LCD">
     <property name="geometry">
      <rect>
-      <x>1710</x>
+      <x>1580</x>
       <y>10</y>
       <width>91</width>
       <height>41</height>
@@ -102,7 +102,7 @@
    <widget class="QLabel" name="credits_label">
     <property name="geometry">
      <rect>
-      <x>1620</x>
+      <x>1490</x>
       <y>70</y>
       <width>71</width>
       <height>31</height>
@@ -122,7 +122,7 @@
    <widget class="QLCDNumber" name="credits_LCD">
     <property name="geometry">
      <rect>
-      <x>1710</x>
+      <x>1580</x>
       <y>70</y>
       <width>91</width>
       <height>41</height>
@@ -138,57 +138,11 @@
      <double>0.000000000000000</double>
     </property>
    </widget>
-   <widget class="QLabel" name="controls_label">
-    <property name="geometry">
-     <rect>
-      <x>1620</x>
-      <y>530</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Controls</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="turn_label">
-    <property name="geometry">
-     <rect>
-      <x>1600</x>
-      <y>580</y>
-      <width>211</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Right/Left Arrow key: Turn</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="forward_label">
-    <property name="geometry">
-     <rect>
-      <x>1600</x>
-      <y>620</y>
-      <width>171</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Up Arrow Key: Forward</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Quit_Button">
     <property name="geometry">
      <rect>
-      <x>1740</x>
-      <y>790</y>
+      <x>1570</x>
+      <y>810</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -204,10 +158,10 @@
      <string>Quit Game</string>
     </property>
    </widget>
-   <widget class="QLabel" name="saved_label">
+   <widget class="QLabel" name="dated_label">
     <property name="geometry">
      <rect>
-      <x>1570</x>
+      <x>1440</x>
       <y>200</y>
       <width>111</width>
       <height>31</height>
@@ -221,13 +175,13 @@
      </font>
     </property>
     <property name="text">
-     <string>Ships Saved</string>
+     <string>Ships dated</string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="saved_LCD">
     <property name="geometry">
      <rect>
-      <x>1710</x>
+      <x>1580</x>
       <y>190</y>
       <width>91</width>
       <height>41</height>
@@ -246,9 +200,9 @@
    <widget class="QLabel" name="lost_label">
     <property name="geometry">
      <rect>
-      <x>1590</x>
-      <y>270</y>
-      <width>111</width>
+      <x>1430</x>
+      <y>280</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -260,13 +214,13 @@
      </font>
     </property>
     <property name="text">
-     <string>Ships Lost</string>
+     <string>Times rejected</string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lost_LCD">
     <property name="geometry">
      <rect>
-      <x>1710</x>
+      <x>1580</x>
       <y>270</y>
       <width>91</width>
       <height>41</height>

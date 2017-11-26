@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <iostream>
 
+
 class player_ship: public QObject, public QGraphicsRectItem {
 Q_OBJECT
 

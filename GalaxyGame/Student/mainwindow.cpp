@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
         starsystemobject * starSystem = new starsystemobject;
         int population = currentStarSystem->getPopulation();
         starSystem->setSizeByPop(population);
+        starSystem->setStarSystem(currentStarSystem);
         starSystem->setOpacity(1);
 
         starSystem->setPen(QPen(Qt::white));
@@ -34,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
 
-    //ship_->setRect(0,0,30,20);
+    ship_->setRect(0,0,30,20);
     ship_->setTransformOriginPoint(15,10);
 
     scene->addItem(ship_);

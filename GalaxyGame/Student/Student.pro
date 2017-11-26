@@ -78,3 +78,6 @@ FORMS += \
     mainwindow.ui \
     mainmenu.ui \
     controls.ui
+
+RESOURCES += \
+    resources.qrc

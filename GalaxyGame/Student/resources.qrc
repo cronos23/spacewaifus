@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/player_ship.png</file>
+        <file>images/starship_blue.png</file>
+        <file>images/starship_green.png</file>
+        <file>images/starship_teal.png</file>
+        <file>images/starship_yellow.png</file>
+    </qresource>
+</RCC>

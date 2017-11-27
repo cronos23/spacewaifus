@@ -13,9 +13,9 @@ MainWindow::MainWindow(QWidget *parent) :
     std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
     std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
     Common::utilityInit(time(NULL));
-
     ui->setupUi(this);
 
+<<<<<<< HEAD
     QGraphicsScene * scene = new QGraphicsScene();
     scene->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
 
@@ -50,23 +50,28 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->addItem(ship_);
     scene->setStickyFocus(true);
     scene->setSceneRect(-10000,-10000,20000,20000);
+=======
+    QGraphicsScene * scene;
+>>>>>>> 897c255630b241ba7a62b2907d97749b68e1fe17
 
-    ship_->setFlag(QGraphicsItem::ItemIsFocusable);
-    ship_->setFocus();
+    // Setting up
+    MainWindowUtility util;
+    scene = util.createGalaxies(galaxy);
+    util.setupShip(*ship_);
 
-    ship_->setPixmap(myPixMap);
+    scene->addItem(ship_);
 
     ui->graphicsView->setTransformationAnchor(GraphicsViewControls::AnchorUnderMouse);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
-//    ui->graphicsView->setSceneRect(0, 0, 800, 800);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
 
-    frameTimer_->setInterval(17); //ruudunpäivitys
+    frameTimer_->setInterval(17); // Locked refresh rate
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::renderFrame);
+
     frameTimer_->start();
 
 }
@@ -74,6 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
 
+    delete frameTimer_;
     delete ship_;
     delete ui;
 }

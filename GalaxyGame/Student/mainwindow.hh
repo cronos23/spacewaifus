@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QObject>
+#include <QPixmap>
 #include <QTimer>
 #include <QTransform>
 #include <vector>
@@ -13,10 +14,10 @@
 #include "graphicsviewcontrols.hh"
 #include "igamerunner.hh"
 #include "initialize.hh"
+#include "mainwindowutility.hh"
 #include "player_ship.hh"
 #include "starsystemobject.hh"
 #include "utility.hh"
-#include <QPixmap>
 
 namespace Ui {
 class MainWindow;

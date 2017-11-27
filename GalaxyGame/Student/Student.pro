@@ -24,7 +24,9 @@ SOURCES += \
     mainmenu.cpp\
     graphicsviewcontrols.cpp \
     controls.cpp \
-    encounter.cpp
+    encounter.cpp \
+    mainwindowutility.cpp
+
 
 
 
@@ -38,7 +40,9 @@ HEADERS  += \
     mainmenu.hh\
     graphicsviewcontrols.hh \
     controls.hh \
-    encounter.hh
+    encounter.hh \
+    mainwindowutility.hh
+
 
 
 

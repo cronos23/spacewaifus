@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
     std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
     Common::utilityInit(time(NULL));
-
     ui->setupUi(this);
 
     QGraphicsScene * scene;
@@ -29,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
-    gameRunner->spawnShips(1);
 
     frameTimer_->setInterval(17); // Locked refresh rate
 

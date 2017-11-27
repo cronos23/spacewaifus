@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dream Ships</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/player_ship.png</normaloff>:/images/images/player_ship.png</iconset>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -38,9 +42,9 @@
   <widget class="QPushButton" name="play_button">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>330</x>
      <y>240</y>
-     <width>171</width>
+     <width>191</width>
      <height>91</height>
     </rect>
    </property>
@@ -57,9 +61,9 @@
   <widget class="QPushButton" name="controls_button">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>330</x>
      <y>390</y>
-     <width>171</width>
+     <width>191</width>
      <height>71</height>
     </rect>
    </property>
@@ -76,9 +80,9 @@
   <widget class="QPushButton" name="quit_button">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>330</x>
      <y>500</y>
-     <width>171</width>
+     <width>191</width>
      <height>71</height>
     </rect>
    </property>
@@ -115,7 +119,9 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>quit_button</sender>

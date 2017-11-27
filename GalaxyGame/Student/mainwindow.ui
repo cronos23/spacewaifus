@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dream Ships</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/player_ship.png</normaloff>:/images/images/player_ship.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="GraphicsViewControls" name="graphicsView">
     <property name="geometry">
@@ -59,7 +63,7 @@
      <enum>QGraphicsView::NoAnchor</enum>
     </property>
     <property name="viewportUpdateMode">
-     <enum>QGraphicsView::FullViewportUpdate</enum>
+     <enum>QGraphicsView::NoViewportUpdate</enum>
     </property>
     <property name="optimizationFlags">
      <set>QGraphicsView::DontAdjustForAntialiasing</set>
@@ -68,9 +72,9 @@
    <widget class="QLabel" name="score_label">
     <property name="geometry">
      <rect>
-      <x>1490</x>
+      <x>1500</x>
       <y>10</y>
-      <width>81</width>
+      <width>61</width>
       <height>31</height>
      </rect>
     </property>
@@ -102,9 +106,9 @@
    <widget class="QLabel" name="credits_label">
     <property name="geometry">
      <rect>
-      <x>1490</x>
+      <x>1480</x>
       <y>70</y>
-      <width>71</width>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
@@ -120,7 +124,7 @@
      <string>Credits</string>
     </property>
     <property name="scaledContents">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLCDNumber" name="credits_LCD">
@@ -145,9 +149,9 @@
    <widget class="QPushButton" name="Quit_Button">
     <property name="geometry">
      <rect>
-      <x>1570</x>
+      <x>1550</x>
       <y>810</y>
-      <width>111</width>
+      <width>131</width>
       <height>51</height>
      </rect>
     </property>
@@ -168,7 +172,7 @@
      <rect>
       <x>1440</x>
       <y>200</y>
-      <width>111</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -208,7 +212,7 @@
      <rect>
       <x>1420</x>
       <y>280</y>
-      <width>141</width>
+      <width>161</width>
       <height>31</height>
      </rect>
     </property>
@@ -253,7 +257,9 @@
    <header>graphicsviewcontrols.hh</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>Quit_Button</sender>

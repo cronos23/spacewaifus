@@ -4,7 +4,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    ship_(new player_ship)
+    ship_(new player_ship),
+    frameTimer_(new QTimer)
 {
 
     std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
@@ -27,20 +28,23 @@ MainWindow::MainWindow(QWidget *parent) :
         starSystem->setSizeByPop(population);
         starSystem->setStarSystem(currentStarSystem);
         starSystem->setOpacity(1);
+        starSystem->setZValue(1);
 
         starSystem->setPen(QPen(Qt::white));
         starSystem->setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
-        starSystem->setRect(coords.x * 200, coords.y * 200, starSystem->getSize(), starSystem->getSize());
+        starSystem->setRect(0, 0, starSystem->getSize(), starSystem->getSize());
+        starSystem->setPos(coords.x * 200, coords.y * 200);
         scene->addItem(starSystem);
     }
 
 
     ship_->setRect(0,0,30,20);
+    ship_->setZValue(2);
     ship_->setTransformOriginPoint(15,10);
 
     scene->addItem(ship_);
     scene->setStickyFocus(true);
-    scene->setSceneRect(-20000,-20000,40000,40000);
+    scene->setSceneRect(-10000,-10000,20000,20000);
 
     ship_->setFlag(QGraphicsItem::ItemIsFocusable);
     ship_->setFocus();
@@ -50,8 +54,13 @@ MainWindow::MainWindow(QWidget *parent) :
 //    ui->graphicsView->setSceneRect(0, 0, 800, 800);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
+
+    frameTimer_->setInterval(17); //ruudunpäivitys
+
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
+    QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::renderFrame);
+    frameTimer_->start();
 
 }
 
@@ -74,4 +83,8 @@ void MainWindow::checkCollision() {
 //    ui->graphicsView->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 //    ship_->setFocus();
     std::cout << "kutsuit mua lul" << std::endl;
+}
+
+void MainWindow::renderFrame() {
+   ui->graphicsView->viewport()->update();
 }

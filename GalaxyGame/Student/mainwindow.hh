@@ -32,6 +32,7 @@ public:
 private:
     Ui::MainWindow *ui;
     player_ship *ship_;
+    QTimer *frameTimer_;
     std::shared_ptr<Common::IEventHandler> handler;
     std::shared_ptr<Student::Galaxy> galaxy;
     std::shared_ptr<Common::IGameRunner> gameRunner;
@@ -39,6 +40,7 @@ private:
 private slots:
     void followShip();
     void checkCollision();
+    void renderFrame();
 };
 
 #endif // MAINWINDOW_HH

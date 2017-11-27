@@ -23,7 +23,8 @@ SOURCES += \
     starsystemobject.cpp \
     mainmenu.cpp\
     graphicsviewcontrols.cpp \
-    controls.cpp
+    controls.cpp \
+    encounter.cpp
 
 
 
@@ -36,7 +37,8 @@ HEADERS  += \
     starsystemobject.hh \
     mainmenu.hh\
     graphicsviewcontrols.hh \
-    controls.hh
+    controls.hh \
+    encounter.hh
 
 
 
@@ -77,7 +79,8 @@ POST_TARGETDEPS += copyfiles
 FORMS += \
     mainwindow.ui \
     mainmenu.ui \
-    controls.ui
+    controls.ui \
+    encounter.ui
 
 RESOURCES += \
     resources.qrc

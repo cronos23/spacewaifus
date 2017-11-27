@@ -16,6 +16,18 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>851</width>
+    <height>702</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>851</width>
+    <height>702</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Controls and Tips</string>
   </property>
@@ -117,7 +129,7 @@
     <rect>
      <x>80</x>
      <y>360</y>
-     <width>701</width>
+     <width>721</width>
      <height>221</height>
     </rect>
    </property>
@@ -127,7 +139,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game is to travel across different star systems to search for spaceships &lt;/p&gt;&lt;p&gt;to date. Your time is limited so act fast! The more spaceships you &amp;quot;befriend&amp;quot; &lt;/p&gt;&lt;p&gt;the more points you get! It's like speed dating. &lt;/p&gt;&lt;p&gt;Being rejected lowers your points so first you need to find out the right things to say. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

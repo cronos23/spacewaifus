@@ -8,6 +8,8 @@
 #include <memory>
 #include <time.h>
 #include "mainmenu.hh"
+#include "encounter.hh"
+
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +19,8 @@ int main(int argc, char *argv[])
     mainmenu mainMenu;
     //mainWin.show();
     mainMenu.show();
+    encounter enC;
+    enC.show();
 
 
     return a.exec();

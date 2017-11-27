@@ -4,13 +4,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-<<<<<<< HEAD
     ship_(new player_ship),
     frameTimer_(new QTimer)
-=======
-    ship_(new player_ship)
 
->>>>>>> 97d14b07c31bd46f9fefd8b6f4526f5fd8da3799
 {
 
     std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
@@ -45,13 +41,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap myPixMap;
     myPixMap.load(":/images/images/player_ship.png");
 
-<<<<<<< HEAD
-    ship_->setRect(0,0,30,20);
+
     ship_->setZValue(2);
-    ship_->setTransformOriginPoint(15,10);
-=======
+
     ship_->setTransformOriginPoint(myPixMap.width()/2, myPixMap.height()/2);
->>>>>>> 97d14b07c31bd46f9fefd8b6f4526f5fd8da3799
+
 
     scene->addItem(ship_);
     scene->setStickyFocus(true);

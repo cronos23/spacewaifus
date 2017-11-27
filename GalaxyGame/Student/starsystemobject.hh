@@ -12,7 +12,7 @@ class starsystemobject: public QObject, public QGraphicsEllipseItem {
 public:
 
     QRectF boundingRect() const;
-    void setSizeByPop(int population);
+    void setSizeByPop();
     int getSize();
     void setStarSystem(std::shared_ptr<Common::StarSystem> starSystem);
 private:

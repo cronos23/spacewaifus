@@ -4,13 +4,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-<<<<<<< HEAD
     ship_(new player_ship),
     frameTimer_(new QTimer)
-=======
-    ship_(new player_ship)
 
->>>>>>> 97d14b07c31bd46f9fefd8b6f4526f5fd8da3799
 {
 
     std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
@@ -20,59 +16,27 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
-    QGraphicsScene * scene = new QGraphicsScene();
-    scene->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
+    QGraphicsScene * scene;
 
-    std::vector<std::string> starSystemNames = galaxy->getSystemNames();
-
-    for ( auto starSystemName:starSystemNames ) {
-        std::shared_ptr<Common::StarSystem> currentStarSystem = galaxy->getStarSystemByName(starSystemName);
-        Common::Point coords = currentStarSystem->getCoordinates();
-        starsystemobject * starSystem = new starsystemobject;
-        int population = currentStarSystem->getPopulation();
-        starSystem->setSizeByPop(population);
-        starSystem->setStarSystem(currentStarSystem);
-        starSystem->setOpacity(1);
-        starSystem->setZValue(1);
-
-        starSystem->setPen(QPen(Qt::white));
-        starSystem->setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
-        starSystem->setRect(0, 0, starSystem->getSize(), starSystem->getSize());
-        starSystem->setPos(coords.x * 200, coords.y * 200);
-        scene->addItem(starSystem);
-    }
-
-    QPixmap myPixMap;
-    myPixMap.load(":/images/images/player_ship.png");
-
-<<<<<<< HEAD
-    ship_->setRect(0,0,30,20);
-    ship_->setZValue(2);
-    ship_->setTransformOriginPoint(15,10);
-=======
-    ship_->setTransformOriginPoint(myPixMap.width()/2, myPixMap.height()/2);
->>>>>>> 97d14b07c31bd46f9fefd8b6f4526f5fd8da3799
+    // Setting up
+    MainWindowUtility util;
+    scene = util.createGalaxies(galaxy);
+    util.setupShip(*ship_);
 
     scene->addItem(ship_);
-    scene->setStickyFocus(true);
-    scene->setSceneRect(-10000,-10000,20000,20000);
-
-    ship_->setFlag(QGraphicsItem::ItemIsFocusable);
-    ship_->setFocus();
-
-    ship_->setPixmap(myPixMap);
 
     ui->graphicsView->setTransformationAnchor(GraphicsViewControls::AnchorUnderMouse);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
-//    ui->graphicsView->setSceneRect(0, 0, 800, 800);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
+    gameRunner->spawnShips(1);
 
-    frameTimer_->setInterval(17); //ruudunpäivitys
+    frameTimer_->setInterval(17); // Locked refresh rate
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::renderFrame);
+
     frameTimer_->start();
 
 }
@@ -80,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
 
+    delete frameTimer_;
     delete ship_;
     delete ui;
 }

@@ -26,11 +26,11 @@ public:
      int getCreditBalance() const;
 
 private:
-    int credits_;
-    unsigned graveyard_;
-    unsigned saved_;
-    unsigned int points_;
-    unsigned MAX_LOAN_ALLOWANCE = 1000;
+    int credits_ = 0;
+    unsigned graveyard_ = 0;
+    unsigned saved_ = 0;
+    unsigned int points_ = 0;
+    unsigned const MAX_LOAN_ALLOWANCE = 1000;
 
 
 };

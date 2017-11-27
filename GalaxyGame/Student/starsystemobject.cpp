@@ -6,7 +6,8 @@ QRectF starsystemobject::boundingRect() const {
 
 
 
-void starsystemobject::setSizeByPop(int population) {
+void starsystemobject::setSizeByPop() {
+    int population = starsystemptr_->getPopulation();
     if (population <= 200000) {
         starsystemsize_ = 20;
 

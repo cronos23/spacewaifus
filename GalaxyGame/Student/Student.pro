@@ -23,7 +23,8 @@ SOURCES += \
     starsystemobject.cpp \
     mainmenu.cpp\
     graphicsviewcontrols.cpp \
-    controls.cpp
+    controls.cpp \
+    mainwindowutility.cpp
 
 
 
@@ -36,7 +37,8 @@ HEADERS  += \
     starsystemobject.hh \
     mainmenu.hh\
     graphicsviewcontrols.hh \
-    controls.hh
+    controls.hh \
+    mainwindowutility.hh
 
 
 

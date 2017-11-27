@@ -1,5 +1,8 @@
 #include "player_ship.hh"
 
+//player_ship::player_ship(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent) {
+//    setPixmap();
+//}
 
 void player_ship::keyPressEvent(QKeyEvent *event) {
 

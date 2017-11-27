@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     ship_(new player_ship)
+
 {
 
     std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
@@ -34,9 +35,10 @@ MainWindow::MainWindow(QWidget *parent) :
         scene->addItem(starSystem);
     }
 
+    QPixmap myPixMap;
+    myPixMap.load(":/images/images/player_ship.png");
 
-    ship_->setRect(0,0,30,20);
-    ship_->setTransformOriginPoint(15,10);
+    ship_->setTransformOriginPoint(myPixMap.width()/2, myPixMap.height()/2);
 
     scene->addItem(ship_);
     scene->setStickyFocus(true);
@@ -44,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ship_->setFlag(QGraphicsItem::ItemIsFocusable);
     ship_->setFocus();
+
+    ship_->setPixmap(myPixMap);
 
     ui->graphicsView->setTransformationAnchor(GraphicsViewControls::AnchorUnderMouse);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);

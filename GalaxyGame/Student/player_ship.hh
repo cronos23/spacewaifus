@@ -7,9 +7,10 @@
 #include <QPainter>
 #include <algorithm>
 #include <iostream>
+#include <QGraphicsPixmapItem>
 
 
-class player_ship: public QObject, public QGraphicsRectItem {
+class player_ship: public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
 public:

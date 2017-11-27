@@ -16,6 +16,7 @@
 #include "player_ship.hh"
 #include "starsystemobject.hh"
 #include "utility.hh"
+#include <QPixmap>
 
 namespace Ui {
 class MainWindow;

@@ -72,7 +72,7 @@
     <rect>
      <x>70</x>
      <y>170</y>
-     <width>301</width>
+     <width>401</width>
      <height>141</height>
     </rect>
    </property>
@@ -127,7 +127,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game blablabla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

@@ -21,6 +21,10 @@ void encounter::setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSyste
 
 void encounter::rejection()
 {
+//    QPixmap waifuPic;
+//    waifuPic.load(":/images/images/starship_teal.png");
+//    ui->picture_label->setPixmap(waifuPic);
+//    ui->picture_label->show();
     ui->response_label->setText("Well this isn't going anywhere...");
     ui->option1_button->setText("Leave");
     ui->option2_button->setText("");

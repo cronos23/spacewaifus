@@ -15,44 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     Common::utilityInit(time(NULL));
     ui->setupUi(this);
 
-<<<<<<< HEAD
-    QGraphicsScene * scene = new QGraphicsScene();
-    scene->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
 
-    std::vector<std::string> starSystemNames = galaxy->getSystemNames();
-
-    for ( auto starSystemName:starSystemNames ) {
-        std::shared_ptr<Common::StarSystem> currentStarSystem = galaxy->getStarSystemByName(starSystemName);
-        Common::Point coords = currentStarSystem->getCoordinates();
-        starsystemobject * starSystem = new starsystemobject;
-        int population = currentStarSystem->getPopulation();
-        starSystem->setSizeByPop(population);
-        starSystem->setStarSystem(currentStarSystem);
-        starSystem->setOpacity(1);
-        starSystem->setZValue(1);
-
-        starSystem->setPen(QPen(Qt::white));
-        starSystem->setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
-        starSystem->setRect(0, 0, starSystem->getSize(), starSystem->getSize());
-        starSystem->setPos(coords.x * 200, coords.y * 200);
-        scene->addItem(starSystem);
-    }
-
-    QPixmap myPixMap;
-    myPixMap.load(":/images/images/player_ship.png");
-
-
-    ship_->setZValue(2);
-
-    ship_->setTransformOriginPoint(myPixMap.width()/2, myPixMap.height()/2);
-
-
-    scene->addItem(ship_);
-    scene->setStickyFocus(true);
-    scene->setSceneRect(-10000,-10000,20000,20000);
-=======
     QGraphicsScene * scene;
->>>>>>> 897c255630b241ba7a62b2907d97749b68e1fe17
+
 
     // Setting up
     MainWindowUtility util;

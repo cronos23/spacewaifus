@@ -20,6 +20,10 @@ public:
     ~encounter();
     void setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem);
     void rejection();
+    void setCorrectAnswer();
+    void infoDialog();
+    void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
+    void successfulEncounter();
 
 private:
     Ui::encounter *ui;

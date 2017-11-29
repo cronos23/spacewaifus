@@ -8,8 +8,10 @@
 #include <QTimer>
 #include <QTransform>
 #include <vector>
+#include "encounter.hh"
 #include "eventhandler.hh"
 #include "galaxy.hh"
+#include "gameproperties.hh"
 #include "gamerunner.hh"
 #include "graphicsviewcontrols.hh"
 #include "igamerunner.hh"
@@ -23,7 +25,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public std::enable_shared_from_this<MainWindow>
 {
     Q_OBJECT
 
@@ -35,14 +37,12 @@ private:
     Ui::MainWindow *ui;
     player_ship *ship_;
     QTimer *frameTimer_;
-    std::shared_ptr<Common::IEventHandler> handler;
-    std::shared_ptr<Student::Galaxy> galaxy;
-    std::shared_ptr<Common::IGameRunner> gameRunner;
+    GameProperties *props_;
 
 private slots:
     void followShip();
     void checkCollision();
-    void renderFrame();
+    void tick();
 };
 
 #endif // MAINWINDOW_HH

@@ -25,7 +25,8 @@ SOURCES += \
     graphicsviewcontrols.cpp \
     controls.cpp \
     encounter.cpp \
-    mainwindowutility.cpp
+    mainwindowutility.cpp \
+    gameproperties.cpp
 
 
 
@@ -41,7 +42,8 @@ HEADERS  += \
     graphicsviewcontrols.hh \
     controls.hh \
     encounter.hh \
-    mainwindowutility.hh
+    mainwindowutility.hh \
+    gameproperties.hh
 
 
 

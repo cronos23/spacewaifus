@@ -26,3 +26,9 @@ int starsystemobject::getSize() {
 void starsystemobject::setStarSystem(std::shared_ptr<Common::StarSystem> starSystem) {
     starsystemptr_ = starSystem;
 }
+
+std::__cxx11::string starsystemobject::getName() {
+    return starsystemptr_->getName();
+}
+
+// Add mouseclick/hoverevent tooltip (or info in hud)

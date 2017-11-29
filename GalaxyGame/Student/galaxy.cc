@@ -3,27 +3,28 @@
 namespace Student {
 
 
-Galaxy::Galaxy()
-{
-
+Galaxy::Galaxy() {
 }
 
-Galaxy::~Galaxy()
-{
-
+Galaxy::~Galaxy(){
 }
 
 void Galaxy::addShip(std::shared_ptr<Common::Ship> ship) {
 
-    if ( std::find(ships_in_the_galaxy_.begin(),
-                   ships_in_the_galaxy_.end(), ship) != ships_in_the_galaxy_.end() ) {
-        throw Common::StateException("Ship already exists in the galaxy");
+    if (ships_in_the_galaxy_.size() != 0) {
+        if ( std::find(ships_in_the_galaxy_.begin(),
+                       ships_in_the_galaxy_.end(), ship) != ships_in_the_galaxy_.end() ) {
+            throw Common::StateException("Ship already exists in the galaxy");
+        }
     }
     ships_in_the_galaxy_.push_back(ship);
 }
 
 void Galaxy::removeShip(std::shared_ptr<Common::Ship> ship){
 
+    if (ships_in_the_galaxy_.size() == 0) {
+        throw Common::ObjectNotFoundException("Ship doesn't exist");
+    }
     if ( std::find(ships_in_the_galaxy_.begin(),
                    ships_in_the_galaxy_.end(), ship) == ships_in_the_galaxy_.end() ) {
         throw Common::ObjectNotFoundException("Ship doesn't exist");
@@ -45,8 +46,8 @@ void Galaxy::addStarSystem(std::shared_ptr<Common::StarSystem> starSystem){
 }
 
 std::shared_ptr<Galaxy::ShipVector> Galaxy::getShips(){
-    auto ships_in_the_galaxy_pointer = std::make_shared<ShipVector>(ships_in_the_galaxy_);
-    return ships_in_the_galaxy_pointer;
+    std::shared_ptr<Galaxy::ShipVector> ships_in_the_galaxy_shared = std::make_shared<Galaxy::ShipVector>();
+    return ships_in_the_galaxy_shared;
 }
 
 Common::StarSystem::StarSystemVector Galaxy::getSystemsInRange

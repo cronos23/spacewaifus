@@ -5,23 +5,26 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     ship_(new player_ship),
-    frameTimer_(new QTimer)
+    frameTimer_(new QTimer),
+    props_(new GameProperties)
 
 {
 
-    std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
-    std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
-    std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
-    Common::utilityInit(time(NULL));
     ui->setupUi(this);
 
+    // Setting up backend
+//    std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
+//    std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
+//    std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
+    props_->setProperties();
+    Common::utilityInit(time(NULL));
+//   gameRunner->spawnShips(20);
 
+
+    // Setting up graphics
     QGraphicsScene * scene;
-
-
-    // Setting up
     MainWindowUtility util;
-    scene = util.createGalaxies(galaxy);
+    scene = util.createGalaxies(props_->getGalaxy());
     util.setupShip(*ship_);
 
     scene->addItem(ship_);
@@ -31,11 +34,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
 
-    frameTimer_->setInterval(17); // Locked refresh rate
+    frameTimer_->setInterval(16); // Locked refresh rate
+
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
-    QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::renderFrame);
+    QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
 
     frameTimer_->start();
 
@@ -54,15 +58,27 @@ void MainWindow::followShip() {
 }
 
 void MainWindow::checkCollision() {
-//    std::string waifu_type = ship_->collidingItems()[0];
-//    ui->graphicsView->setViewportUpdateMode(QGraphicsView::NoViewportUpdate);
+
 //    ui->graphicsView->setFocus();
-//    launch dialog
-//    ui->graphicsView->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+//    frameTimer_->stop();
+    encounter *enC = new encounter;
+    enC->show();
+    frameTimer_->stop();
+    this->hide();
+
 //    ship_->setFocus();
-    std::cout << "kutsuit mua lul" << std::endl;
+//    frameTimer->start()
+
+//    starsystemobject *starSystem = (starsystemobject*)ui->graphicsView->scene()->itemAt(ship_->collidingItems()[0]->pos(), QTransform());
+//    std::cout << ship_->collidingItems().size() << std::endl;
+//    std::string starSystemName = starSystem->getName();
+//    std::cout << starSystem->getStarSystem()->getName() << std::endl;
 }
 
-void MainWindow::renderFrame() {
+void MainWindow::tick() {
+   props_->getRunner()->createActions();
+   props_->getRunner()->doActions();
    ui->graphicsView->viewport()->update();
+
 }
+

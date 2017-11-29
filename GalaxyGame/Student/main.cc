@@ -7,7 +7,7 @@
 #include "utility.hh"
 #include "eventhandler.hh"
 #include "mainmenu.hh"
-#include "encounter.hh"
+//#include "encounter.hh"
 
 
 int main(int argc, char *argv[])
@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
 
     mainmenu mainMenu;
     mainMenu.show();
-    encounter enC;
-    enC.show();
+//    encounter enC;
+//    enC.show();
 
 
     return a.exec();

@@ -13,12 +13,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // Setting up backend
-    std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
-    std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
-    std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
-//    props_->setProperties();
+
+    props_->setProperties();
     Common::utilityInit(time(NULL));
-    gameRunner->spawnShips(20);
+    props_->getRunner()->spawnShips(20);
 
 
     // Setting up graphics

@@ -13,12 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // Setting up backend
-//    std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
-//    std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
-//    std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
-    props_->setProperties();
+    std::shared_ptr<Common::IEventHandler> handler = std::make_shared<Student::EventHandler>();
+    std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
+    std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
+//    props_->setProperties();
     Common::utilityInit(time(NULL));
-//   gameRunner->spawnShips(20);
+    gameRunner->spawnShips(20);
 
 
     // Setting up graphics
@@ -61,15 +61,19 @@ void MainWindow::checkCollision() {
 
 //    ui->graphicsView->setFocus();
 //    frameTimer_->stop();
-    encounter *enC = new encounter;
-    enC->show();
     frameTimer_->stop();
     this->hide();
 
 //    ship_->setFocus();
 //    frameTimer->start()
+    QGraphicsItem* starsystempointer = ui->graphicsView->scene()->itemAt(ship_->collidingItems()[0]->pos(), QTransform());
+    starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
+    std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
+    encounter *enC = new encounter;
+    enC->setStarSystem(starSystemptr);
+    enC->show();
 
-//    starsystemobject *starSystem = (starsystemobject*)ui->graphicsView->scene()->itemAt(ship_->collidingItems()[0]->pos(), QTransform());
+
 //    std::cout << ship_->collidingItems().size() << std::endl;
 //    std::string starSystemName = starSystem->getName();
 //    std::cout << starSystem->getStarSystem()->getName() << std::endl;

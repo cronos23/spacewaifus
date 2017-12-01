@@ -64,8 +64,9 @@ void MainWindow::checkCollision() {
 
 //    ship_->setFocus();
 //    frameTimer->start()
-    QGraphicsItem* starsystempointer = ui->graphicsView->scene()->itemAt(ship_->collidingItems()[0]->pos(), QTransform());
+    QGraphicsItem* starsystempointer = ship_->collidingItems()[0];
     starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
+//    std::cout << starSystem->getStarSystem()->getName() << std::endl;
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
     encounter *enC = new encounter;
     enC->setStarSystem(starSystemptr);

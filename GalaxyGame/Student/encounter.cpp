@@ -49,45 +49,45 @@ void encounter::rejection()
 
 void encounter::setCorrectAnswer()
 {
-    if (currentStarSystem_->getEconomy() == Terraforming)
+    if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Terraforming)
     {
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
 
     }
-    else if (currentStarSystem_->getEconomy() == Refinery)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Refinery)
     {
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
     }
-    else if (currentStarSystem_->getEconomy() == Extraction)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Extraction)
     {
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
     }
-    else if (currentStarSystem_->getEconomy() == Colony)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Colony)
     {
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
     }
-    else if (currentStarSystem_->getEconomy() == HiTech)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::HiTech)
     {
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
     }
-    else if (currentStarSystem_->getEconomy() == Industrial
-             or currentStarSystem_->getEconomy() == Tourism)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Industrial
+             or currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Tourism)
     {
         QObject::connect(ui->option3_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
     }
-    else if (currentStarSystem_->getEconomy() == Agriculture
-             or currentStarSystem_->getEconomy() == Service)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Agriculture
+             or currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Service)
     {
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
     }
-    else if (currentStarSystem_->getEconomy() == Military)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Military)
     {
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::firstRightDialog);
@@ -102,38 +102,38 @@ void encounter::setCorrectAnswer()
 
 void encounter::infoDialog()
 {
-    if (currentStarSystem_->getEconomy() == Terraforming)
+    if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Terraforming)
     {
         ui->response_label->setText("There's not that much to say about me...");
 
     }
-    else if (currentStarSystem_->getEconomy() == Refinery)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Refinery)
     {
         ui->response_label->setText("I'm getting old so I'd just like to settle down with someone and share my wealth");
     }
-    else if (currentStarSystem_->getEconomy() == Extraction)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Extraction)
     {
         ui->response_label->setText("I haven't met anyone special in the whole starsystem.");
     }
-    else if (currentStarSystem_->getEconomy() == Colony)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Colony)
     {
         ui->response_label->setText("...");
     }
-    else if (currentStarSystem_->getEconomy() == HiTech)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::HiTech)
     {
         ui->response_label->setText("I am the best space racer in the galaxy!");
     }
-    else if (currentStarSystem_->getEconomy() == Industrial
-             or currentStarSystem_->getEconomy() == Tourism)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Industrial
+             or currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Tourism)
     {
         ui->response_label->setText("I'm more fond of shiny things than other ships.");
     }
-    else if (currentStarSystem_->getEconomy() == Agriculture
-             or currentStarSystem_->getEconomy() == Service)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Agriculture
+             or currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Service)
     {
         ui->response_label->setText("I just want a strong husbando to take care of me.");
     }
-    else if (currentStarSystem_->getEconomy() == Military)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Military)
     {
         ui->response_label->setText("I will destroy anyone that's weaker than me.");
     }
@@ -145,7 +145,7 @@ void encounter::infoDialog()
 
 void encounter::firstRightDialog()
 {
-    if (currentStarSystem_->getEconomy() == Terraforming)
+    if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Terraforming)
     {
         ui->response_label->setText("Wow, thanks.");
         ui->option1_button->setText("Want to hang out?");
@@ -156,7 +156,7 @@ void encounter::firstRightDialog()
                          this, &encounter::successfulEncounter);
 
     }
-    else if (currentStarSystem_->getEconomy() == Refinery)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Refinery)
     {
         ui->response_label->setText("Wow, really?");
         ui->option1_button->setText("I wouldn't mind settling down with you.");
@@ -168,7 +168,7 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::rejection);
     }
-    else if (currentStarSystem_->getEconomy() == Extraction)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Extraction)
     {
         ui->response_label->setText("That's so cool! You really are something else.");
         ui->option1_button->setText("Want to go on an adventure?");
@@ -178,7 +178,7 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
     }
-    else if (currentStarSystem_->getEconomy() == Colony)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Colony)
     {
         ui->response_label->setText("...");
         ui->option1_button->setText("Okay?");
@@ -188,7 +188,7 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
     }
-    else if (currentStarSystem_->getEconomy() == HiTech)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::HiTech)
     {
         ui->response_label->setText("I like what I'm hearing.");
         ui->option1_button->setText("I'm a fast racer too.");
@@ -200,8 +200,8 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::rejection);
     }
-    else if (currentStarSystem_->getEconomy() == Industrial or
-              currentStarSystem_->getEconomy() == Tourism)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Industrial
+             or currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Tourism)
     {
         ui->response_label->setText("You have my attention..");
         ui->option1_button->setText("There's more to me than just money.");
@@ -213,8 +213,8 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
     }
-    else if (currentStarSystem_->getEconomy() == Agriculture or
-             currentStarSystem_->getEconomy() == Service)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Agriculture
+             or currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Service)
     {
         ui->response_label->setText("You are so kawaii!");
         ui->option1_button->setText("What alien language is that?");
@@ -226,7 +226,7 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
     }
-    else if (currentStarSystem_->getEconomy() == Military)
+    else if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Military)
     {
         ui->response_label->setText("Omae Wa Mou Shindeiru");
         ui->option1_button->setText("NANI!?");
@@ -248,6 +248,11 @@ void encounter::firstRightDialog()
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
     }
+
+}
+
+void encounter::successfulEncounter()
+{
 
 }
 

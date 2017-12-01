@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "starsystem.hh"
 #include <QPixmap>
+#include "statistics.hh"
 
 
 

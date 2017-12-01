@@ -18,11 +18,17 @@ QGraphicsScene* MainWindowUtility::createGalaxies(std::shared_ptr<Student::Galax
         starSystem->setSizeByPop();
         starSystem->setOpacity(1);
         starSystem->setZValue(1);
-
         starSystem->setPen(QPen(Qt::white));
         starSystem->setBrush(QBrush(Qt::yellow, Qt::SolidPattern));
         starSystem->setRect(0, 0, starSystem->getSize(), starSystem->getSize());
         starSystem->setPos(coords.x * 200, coords.y * 200);
+        std::ostringstream toolTipInfo;
+        toolTipInfo << currentStarSystem->getName() << "\n"
+                    << "Coordinates: " << currentStarSystem->getCoordinates().x << ", " << currentStarSystem->getCoordinates().y
+                    << "\n" << "Population: " << currentStarSystem->getPopulation() <<
+                       "\n" << "Type of possible waifu: " << getWaifuType(currentStarSystem->getEconomy());
+        std::string toolTipInfostr = toolTipInfo.str();
+        starSystem->setToolTip(QString::fromStdString(toolTipInfostr));
         scene->addItem(starSystem);
         scene->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
         scene->setStickyFocus(true);
@@ -42,4 +48,22 @@ void MainWindowUtility::setupShip(player_ship &ship) {
     ship.setFocus();
     ship.setPixmap(playerShipPixmap);
     ship.setPos(100, 100);
+}
+
+std::string MainWindowUtility::getWaifuType(Common::StarSystem::ECONOMY_TYPE econ_type) {
+    std::map<Common::StarSystem::ECONOMY_TYPE, std::string> waifu_types;
+
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Terraforming] = "Dandere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Refinery] = "Wealthy";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Extraction] = "Yandere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Colony] = "Kuudere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::HiTech] = "Kamidere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Industrial] = "Greedy";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Tourism] = "Greedy";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Agriculture] = "Deredere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Service] = "Deredere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::Military]= "Tsundere";
+    waifu_types[Common::StarSystem::ECONOMY_TYPE::None] = "Special";
+
+    return waifu_types[econ_type];
 }

@@ -14,9 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Setting up backend
 
-    props_->setProperties();
     Common::utilityInit(time(NULL));
-    props_->getRunner()->spawnShips(20);
+    props_->setProperties();
 
 
     // Setting up graphics
@@ -68,10 +67,13 @@ void MainWindow::checkCollision() {
     starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
 //    std::cout << starSystem->getStarSystem()->getName() << std::endl;
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
-    encounter *enC = new encounter;
-    enC->setStarSystem(starSystemptr);
-    enC->show();
-
+    if ( props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName()).size() != 0 ) {
+        encounter *enC = new encounter;
+        enC->setStarSystem(starSystemptr);
+        enC->setCorrectAnswer();
+        enC->show();
+    }
+    std::cout << props_->getGalaxy()->getShips()->size() << std::endl;
 
 //    std::cout << ship_->collidingItems().size() << std::endl;
 //    std::string starSystemName = starSystem->getName();

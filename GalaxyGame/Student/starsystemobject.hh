@@ -15,7 +15,7 @@ public:
     void setSizeByPop();
     int getSize();
     void setStarSystem(std::shared_ptr<Common::StarSystem> starSystem);
-    std::string getName();
+    std::shared_ptr<Common::StarSystem> getStarSystem();
 private:
     int starsystemsize_;
     std::shared_ptr<Common::StarSystem> starsystemptr_;

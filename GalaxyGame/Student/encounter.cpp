@@ -253,7 +253,11 @@ void encounter::firstRightDialog()
 
 void encounter::successfulEncounter()
 {
-
+    ui->response_label->setText("*You have succeeded in the art of seduction.*");
+    ui->option1_button->setText("*Leave*");
+    ui->option2_button->setEnabled(false);
+    ui->option3_button->setEnabled(false);
+    ui->info_button->setEnabled(false);
 }
 
 

@@ -1,6 +1,7 @@
 #ifndef ENCOUNTER_HH
 #define ENCOUNTER_HH
 
+#include <QDialog>
 #include <QWidget>
 #include "starsystem.hh"
 #include <QPixmap>
@@ -12,7 +13,7 @@ namespace Ui {
 class encounter;
 }
 
-class encounter : public QWidget
+class encounter : public QDialog
 {
     Q_OBJECT
 

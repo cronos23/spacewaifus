@@ -14,9 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Setting up backend
 
-    props_->setProperties();
     Common::utilityInit(time(NULL));
-    props_->getRunner()->spawnShips(20);
+    props_->setProperties();
 
 
     // Setting up graphics
@@ -59,8 +58,6 @@ void MainWindow::checkCollision() {
 
 //    ui->graphicsView->setFocus();
 //    frameTimer_->stop();
-    frameTimer_->stop();
-    this->hide();
 
 //    ship_->setFocus();
 //    frameTimer->start()
@@ -68,10 +65,19 @@ void MainWindow::checkCollision() {
     starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
 //    std::cout << starSystem->getStarSystem()->getName() << std::endl;
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
-    encounter *enC = new encounter;
-    enC->setStarSystem(starSystemptr);
-    enC->show();
-
+    if ( props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName()).size() != 0 ) {
+        frameTimer_->stop();
+//        this->hide();
+        encounter *enC = new encounter;
+        enC->setStarSystem(starSystemptr);
+        enC->setCorrectAnswer();
+        enC->exec();
+        frameTimer_->start();
+//    } else {
+//        QMessageBox starSystemNoInterest;
+//        starSystemNoInterest.setText("There seems to be nothing of interest here");
+//        starSystemNoInterest.exec();
+    }
 
 //    std::cout << ship_->collidingItems().size() << std::endl;
 //    std::string starSystemName = starSystem->getName();

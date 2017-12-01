@@ -2,6 +2,7 @@
 #define MAINWINDOW_HH
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QGraphicsScene>
 #include <QObject>
 #include <QPixmap>

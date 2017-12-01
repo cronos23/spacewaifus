@@ -46,7 +46,7 @@ void Galaxy::addStarSystem(std::shared_ptr<Common::StarSystem> starSystem){
 }
 
 std::shared_ptr<Galaxy::ShipVector> Galaxy::getShips(){
-    std::shared_ptr<Galaxy::ShipVector> ships_in_the_galaxy_shared = std::make_shared<Galaxy::ShipVector>();
+    std::shared_ptr<Galaxy::ShipVector> ships_in_the_galaxy_shared = std::make_shared<Galaxy::ShipVector>(ships_in_the_galaxy_);
     return ships_in_the_galaxy_shared;
 }
 
@@ -108,7 +108,9 @@ std::vector<std::string> Galaxy::getSystemNames() {
     std::vector<std::string> star_system_names;
 
     for ( auto vectorstarSystem:starsystems_in_the_galaxy_ ) {
+
         star_system_names.push_back( vectorstarSystem->getName() );
+
     }
 
     return star_system_names;

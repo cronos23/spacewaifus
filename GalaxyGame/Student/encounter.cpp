@@ -2,7 +2,7 @@
 #include "ui_encounter.h"
 
 encounter::encounter(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::encounter)
 {
     ui->setupUi(this);
@@ -161,6 +161,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("Wow, really?");
         ui->option1_button->setText("I wouldn't mind settling down with you.");
         ui->option2_button->setText("Did you say wealth?");
+        ui->option2_button->setEnabled(true); // Why is this needed?
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -193,6 +194,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("I like what I'm hearing.");
         ui->option1_button->setText("I'm a fast racer too.");
         ui->option2_button->setText("Can you teach me?");
+        ui->option2_button->setEnabled(true); // Why is this needed?
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -206,6 +208,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("You have my attention..");
         ui->option1_button->setText("There's more to me than just money.");
         ui->option2_button->setText("*Give more money*");
+        ui->option2_button->setEnabled(true); // Why is this needed?
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -219,6 +222,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("You are so kawaii!");
         ui->option1_button->setText("What alien language is that?");
         ui->option2_button->setText("You're cute too.");
+        ui->option2_button->setEnabled(true); // Why is this needed?
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -231,6 +235,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("Omae Wa Mou Shindeiru");
         ui->option1_button->setText("NANI!?");
         ui->option2_button->setText("*Teleports behind her*");
+        ui->option2_button->setEnabled(true); // Why is this needed?
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,

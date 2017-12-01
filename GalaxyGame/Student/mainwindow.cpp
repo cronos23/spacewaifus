@@ -58,8 +58,6 @@ void MainWindow::checkCollision() {
 
 //    ui->graphicsView->setFocus();
 //    frameTimer_->stop();
-    frameTimer_->stop();
-    this->hide();
 
 //    ship_->setFocus();
 //    frameTimer->start()
@@ -68,12 +66,18 @@ void MainWindow::checkCollision() {
 //    std::cout << starSystem->getStarSystem()->getName() << std::endl;
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
     if ( props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName()).size() != 0 ) {
+        frameTimer_->stop();
+//        this->hide();
         encounter *enC = new encounter;
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
-        enC->show();
+        enC->exec();
+        frameTimer_->start();
+//    } else {
+//        QMessageBox starSystemNoInterest;
+//        starSystemNoInterest.setText("There seems to be nothing of interest here");
+//        starSystemNoInterest.exec();
     }
-    std::cout << props_->getGalaxy()->getShips()->size() << std::endl;
 
 //    std::cout << ship_->collidingItems().size() << std::endl;
 //    std::string starSystemName = starSystem->getName();

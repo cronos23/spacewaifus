@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     Common::utilityInit(time(NULL));
     props_->setProperties();
+    props_->getRunner()->spawnShips(150);
 
 
     // Setting up graphics
@@ -37,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
+
 
     frameTimer_->start();
 
@@ -63,16 +65,20 @@ void MainWindow::checkCollision() {
 //    frameTimer->start()
     QGraphicsItem* starsystempointer = ship_->collidingItems()[0];
     starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
-//    std::cout << starSystem->getStarSystem()->getName() << std::endl;
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
-    if ( props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName()).size() != 0 ) {
+    std::string starSystemName = starSystemptr->getName();
+    if ( props_->getGalaxy()->getShipsInStarSystem(starSystemName).size() != 0 ) {
         frameTimer_->stop();
 //        this->hide();
         encounter *enC = new encounter;
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
         enC->exec();
+        ship_->moveBy(50, 50);
         frameTimer_->start();
+        props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
+        std::cout << starSystemptr->getName() << std::endl;
+        props_->getRunner()->spawnShips(1);
 //    } else {
 //        QMessageBox starSystemNoInterest;
 //        starSystemNoInterest.setText("There seems to be nothing of interest here");
@@ -85,9 +91,17 @@ void MainWindow::checkCollision() {
 }
 
 void MainWindow::tick() {
-   props_->getRunner()->createActions();
-   props_->getRunner()->doActions();
-   ui->graphicsView->viewport()->update();
+    props_->tick();
+    ui->graphicsView->viewport()->update();
 
 }
 
+// TODO
+// Reaktio distress-signaaliin
+// encounterin pisteiden välittäminen statisticsille
+// ajastin
+// game over
+// nothing of interest here
+// makeactions ja doactions
+// alusten spawnaus muuallekin kuin kahteen economy typeen
+// asianmukaisesti vaihtuva kuva encounteriin

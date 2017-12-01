@@ -17,6 +17,7 @@ public:
     std::shared_ptr<Common::IEventHandler> getHandler();
     std::shared_ptr<Student::Galaxy> getGalaxy();
     std::shared_ptr<Common::IGameRunner> getRunner();
+    void tick();
 private:
     std::shared_ptr<Common::IEventHandler> handler_;
     std::shared_ptr<Student::Galaxy> galaxy_;

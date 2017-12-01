@@ -11,7 +11,7 @@ void GameProperties::setProperties() {
     handler_ = handler;
     galaxy_ = galaxy;
     gameRunner_ = gameRunner;
-    gameRunner_->spawnShips(20);
+//    gameRunner_->spawnShips(150);
 }
 
 std::shared_ptr<Common::IEventHandler> GameProperties::getHandler() {
@@ -24,4 +24,9 @@ std::shared_ptr<Student::Galaxy> GameProperties::getGalaxy() {
 
 std::shared_ptr<Common::IGameRunner> GameProperties::getRunner() {
     return gameRunner_;
+}
+
+void GameProperties::tick() {
+    gameRunner_->createActions();
+    gameRunner_->doActions();
 }

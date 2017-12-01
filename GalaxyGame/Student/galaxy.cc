@@ -96,10 +96,12 @@ Galaxy::ShipVector Galaxy::getShipsInStarSystem(std::string name) {
     ShipVector ships_in_star_system;
 
     for ( auto vectorShip:ships_in_the_galaxy_ ) {
+        std::shared_ptr<Common::StarSystem> null;
 
-        if ( vectorShip->getLocation()->getName() == name ) {
-            ships_in_star_system.push_back(vectorShip);
-        }
+            if ( vectorShip->getLocation() == getStarSystemByName(name) ) {
+                ships_in_star_system.push_back(vectorShip);
+            }
+
     }
     return ships_in_star_system;
 }

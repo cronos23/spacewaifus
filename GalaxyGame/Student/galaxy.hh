@@ -7,6 +7,7 @@
 #include "stateexception.hh"
 #include "objectnotfoundexception.hh"
 #include <algorithm>
+#include <iostream>
 
 namespace Student {
 

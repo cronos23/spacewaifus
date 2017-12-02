@@ -18,9 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Setting up backend
 
     Common::utilityInit(time(NULL));
-
     props_->setProperties();
-
     props_->getRunner()->spawnShips(150);
 
 
@@ -129,9 +127,6 @@ void MainWindow::startTimers() {
 }
 
 // TODO
-// encounterin pisteiden välittäminen statisticsille
 // ajastin
 // game over
-// töttöröö
-// asianmukaisesti vaihtuva kuva encounteriin
 // galaxyn catchit

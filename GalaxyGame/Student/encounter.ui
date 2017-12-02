@@ -110,7 +110,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Bribe</string>
+    <string>Offer Bribe (500 credits)</string>
    </property>
   </widget>
   <widget class="QPushButton" name="info_button">

@@ -26,6 +26,18 @@ encounter::~encounter()
 void encounter::setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem)
 {
     currentStarSystemEconomy_ = givenStarSystem->getEconomy();
+    QPixmap WaifuPic;
+    if (currentStarSystemEconomy_ < 4) {
+        WaifuPic.load(":/images/images/starship_teal.png");
+    } else if (currentStarSystemEconomy_ < 7){
+        WaifuPic.load(":/images/images/starship_yellow.png");
+    } else if (currentStarSystemEconomy_ < 10) {
+        WaifuPic.load(":/images/images/starship_green.png");
+    } else {
+        WaifuPic.load(":/images/images/starship_blue.png");
+    }
+    ui->picture_label->setPixmap(WaifuPic);
+
 }
 
 
@@ -238,10 +250,12 @@ void encounter::firstRightDialog()
     {
         ui->response_label->setText("You have my attention..");
         ui->option1_button->setText("There's more to me than just money.");
-        ui->option2_button->setText("*Give more money*");
+        ui->option2_button->setText("*Offer more money*");
         ui->option2_button->setEnabled(true); // Why is this needed?
+        ui->option3_button->setText("");
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
+        ui->info_button->setText("");
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
         QObject::connect(ui->option2_button, &QPushButton::clicked,
@@ -268,7 +282,9 @@ void encounter::firstRightDialog()
         ui->option2_button->setText("*Teleports behind her*");
         ui->option2_button->setEnabled(true); // Why is this needed?
         ui->option3_button->setEnabled(false);
+        ui->option3_button->setText("");
         ui->info_button->setEnabled(false);
+        ui->info_button->setText("");
         QObject::disconnect(ui->option2_button, &QPushButton::clicked,
                          this, &encounter::rejection);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -298,8 +314,11 @@ void encounter::successfulEncounter()
                      this, &encounter::close);
     ui->option1_button->setText("*Leave*");
     ui->option2_button->setEnabled(false);
+    ui->option2_button->setText("");
     ui->option3_button->setEnabled(false);
+    ui->option3_button->setText("");
     ui->info_button->setEnabled(false);
+    ui->info_button->setText("");
     outcome_ = SavedNormal;
     if (currentStarSystemEconomy_ == Common::StarSystem::ECONOMY_TYPE::Industrial
             or currentStarSystemEconomy_ == Common::StarSystem::ECONOMY_TYPE::Tourism) {
@@ -308,11 +327,6 @@ void encounter::successfulEncounter()
         outcome_ = SavedWealthy;
     }
 
-}
-
-std::string encounter::returnOutcome()
-{
-    return outcome_;
 }
 
 

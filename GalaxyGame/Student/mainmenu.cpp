@@ -3,7 +3,7 @@
 
 
 mainmenu::mainmenu(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::mainmenu),
     mainWin(new MainWindow),
     controlsWin(new controls)
@@ -26,12 +26,13 @@ mainmenu::~mainmenu()
 
 void mainmenu::newGame()
 {
+    mainWin->startTimers();
     mainWin->show();
     this->close();
 }
 
 void mainmenu::openControls()
 {
-    controlsWin->show();
+    controlsWin->exec();
 }
 

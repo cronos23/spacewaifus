@@ -28,8 +28,16 @@ public:
     void successfulEncounter();
     std::string returnOutcome();
 
+    void setStatistics(Student::Statistics &stats);
+    enum OUTCOME {
+        SavedNormal,
+        SavedWealthy,
+        SavedBribe,
+        Lost
+    };
 private:
     Ui::encounter *ui;
+    encounter::OUTCOME outcome_;
     std::shared_ptr<Common::StarSystem> currentStarSystem_;
     std::string outcome_;
 };

@@ -5,7 +5,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     ship_(new player_ship),
+    actionTimer_(new QTimer),
     frameTimer_(new QTimer),
+    gameTimer_(new QTimer),
     props_(new GameProperties),
     stats_(new Student::Statistics)
 
@@ -16,7 +18,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // Setting up backend
 
     Common::utilityInit(time(NULL));
+
     props_->setProperties();
+
+    props_->getRunner()->spawnShips(150);
 
 
     // Setting up graphics
@@ -33,13 +38,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->centerOn(ship_);
 
     frameTimer_->setInterval(16); // Locked refresh rate
+    actionTimer_ ->setInterval(15000); // cargo ship "turn"
+    gameTimer_->setSingleShot(true);
+    gameTimer_->setInterval(360000);
 
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
+    QObject::connect(actionTimer_, &QTimer::timeout, props_, &GameProperties::tick);
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
+    QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
+    QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
+                     this, &MainWindow::reactToDistress);
 
-    frameTimer_->start();
 
     ui->credits_LCD->display(stats_->getCreditBalance());
     ui->lost_LCD->display((int) stats_->getLostShips());
@@ -62,38 +73,67 @@ void MainWindow::followShip() {
 
 void MainWindow::checkCollision() {
 
-//    ui->graphicsView->setFocus();
-//    frameTimer_->stop();
 
-//    ship_->setFocus();
-//    frameTimer->start()
     QGraphicsItem* starsystempointer = ship_->collidingItems()[0];
     starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
-//    std::cout << starSystem->getStarSystem()->getName() << std::endl;
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
-    if ( props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName()).size() != 0 ) {
+    std::string starSystemName = starSystemptr->getName();
+    if ( props_->getGalaxy()->getShipsInStarSystem(starSystemName).size() != 0 ) {
         frameTimer_->stop();
-//        this->hide();
+
         encounter *enC = new encounter;
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
         enC->exec();
+        ship_->moveBy(100, 100);
         frameTimer_->start();
-//    } else {
-//        QMessageBox starSystemNoInterest;
-//        starSystemNoInterest.setText("There seems to be nothing of interest here");
-//        starSystemNoInterest.exec();
+        props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
+        props_->getRunner()->spawnShips(1);
+
+    } else {
+        QMessageBox starSystemNoInterest;
+        starSystemNoInterest.setText("There seems to be nothing of interest here");
+        starSystemNoInterest.exec();
+        ship_->moveBy(100, 100);
     }
 
-//    std::cout << ship_->collidingItems().size() << std::endl;
-//    std::string starSystemName = starSystem->getName();
-//    std::cout << starSystem->getStarSystem()->getName() << std::endl;
 }
 
 void MainWindow::tick() {
-   props_->getRunner()->createActions();
-   props_->getRunner()->doActions();
-   ui->graphicsView->viewport()->update();
+
+    ui->graphicsView->viewport()->update();
 
 }
 
+void MainWindow::GameOver() {
+//    GameOver *gameOver = new GameOver;
+//    gameOver->setPoints(stats_->getPoints());
+//    gameOver->setWaifus(stats_->getSavedShips());
+//    gameOver->show();
+}
+
+void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
+    std::ostringstream distressInfo;
+    distressInfo << "Distress signal detected!" <<
+                    "\n Location: " << ship->getLocation()->getName();
+    std::string distressInfostr = distressInfo.str();
+    ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
+}
+
+//void MainWindow::reactToStoppedDistress(std::shared_ptr<Common::Ship> ship) {
+
+//}
+
+void MainWindow::startTimers() {
+    actionTimer_->start();
+    frameTimer_->start();
+    gameTimer_->start();
+}
+
+// TODO
+// encounterin pisteiden välittäminen statisticsille
+// ajastin
+// game over
+// töttöröö
+// asianmukaisesti vaihtuva kuva encounteriin
+// galaxyn catchit

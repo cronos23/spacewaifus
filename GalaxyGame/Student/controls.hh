@@ -1,13 +1,13 @@
 #ifndef CONTROLS_HH
 #define CONTROLS_HH
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class controls;
 }
 
-class controls : public QWidget
+class controls : public QDialog
 {
     Q_OBJECT
 

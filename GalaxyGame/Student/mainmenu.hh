@@ -1,7 +1,7 @@
 #ifndef MAINMENU_HH
 #define MAINMENU_HH
 
-#include <QWidget>
+#include <QDialog>
 #include "mainwindow.hh"
 #include "controls.hh"
 
@@ -9,7 +9,7 @@ namespace Ui {
 class mainmenu;
 }
 
-class mainmenu : public QWidget
+class mainmenu : public QDialog
 {
     Q_OBJECT
 

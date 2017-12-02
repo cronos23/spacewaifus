@@ -48,6 +48,10 @@ void encounter::rejection()
     ui->info_button->setEnabled(false);
 }
 
+void encounter::setStatistics(Student::Statistics &stats) {
+
+}
+
 void encounter::setCorrectAnswer()
 {
     if (currentStarSystem_->getEconomy() == Common::StarSystem::ECONOMY_TYPE::Terraforming)

@@ -75,7 +75,8 @@ std::shared_ptr<Common::StarSystem> Galaxy::getRandomSystem() {
     if ( max_index == 0 ) {
         throw Common::ObjectNotFoundException("There are no Star Systems in the galaxy");
     }
-    int random_index = rand() % max_index;
+    int random_index = Common::randomMinMax(0, max_index-1);
+
     return starsystems_in_the_galaxy_[random_index];
 }
 
@@ -97,9 +98,10 @@ Galaxy::ShipVector Galaxy::getShipsInStarSystem(std::string name) {
 
     for ( auto vectorShip:ships_in_the_galaxy_ ) {
 
-        if ( vectorShip->getLocation()->getName() == name ) {
-            ships_in_star_system.push_back(vectorShip);
-        }
+            if ( vectorShip->getLocation() == getStarSystemByName(name) ) {
+                ships_in_star_system.push_back(vectorShip);
+            }
+
     }
     return ships_in_star_system;
 }

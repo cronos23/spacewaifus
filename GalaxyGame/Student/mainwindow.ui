@@ -100,6 +100,9 @@
       </item>
       <item row="0" column="2">
        <widget class="QLCDNumber" name="score_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="digitCount">
          <number>6</number>
         </property>
@@ -125,6 +128,10 @@
       </item>
       <item row="1" column="2">
        <widget class="QLCDNumber" name="credits_LCD">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="smallDecimalPoint">
          <bool>false</bool>
         </property>
@@ -157,6 +164,9 @@
       </item>
       <item row="2" column="2">
        <widget class="QLCDNumber" name="saved_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="smallDecimalPoint">
          <bool>false</bool>
         </property>
@@ -185,6 +195,9 @@
       </item>
       <item row="3" column="2">
        <widget class="QLCDNumber" name="lost_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="smallDecimalPoint">
          <bool>false</bool>
         </property>

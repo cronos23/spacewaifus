@@ -78,7 +78,7 @@ public:
         response_label->setText(QApplication::translate("encounter", "Hey there~", 0));
         option1_button->setText(QApplication::translate("encounter", "Compliment", 0));
         option2_button->setText(QApplication::translate("encounter", "Brag", 0));
-        option3_button->setText(QApplication::translate("encounter", "Bribe", 0));
+        option3_button->setText(QApplication::translate("encounter", "Offer Bribe (500 credits)", 0));
         info_button->setText(QApplication::translate("encounter", "Info", 0));
     } // retranslateUi
 

@@ -38,9 +38,11 @@ private:
     Ui::MainWindow *ui;
     player_ship *ship_;
     QTimer *frameTimer_;
+    QTimer *actionTimer_;
     GameProperties *props_;
 
 private slots:
+//    void reactToSignal(std::shared_ptr<Common::Ship> ship);
     void followShip();
     void checkCollision();
     void tick();

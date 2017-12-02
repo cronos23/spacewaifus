@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     ship_(new player_ship),
     frameTimer_(new QTimer),
+    actionTimer_(new QTimer),
     props_(new GameProperties)
 
 {
@@ -15,7 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // Setting up backend
 
     Common::utilityInit(time(NULL));
+
     props_->setProperties();
+
     props_->getRunner()->spawnShips(150);
 
 
@@ -33,14 +36,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->centerOn(ship_);
 
     frameTimer_->setInterval(16); // Locked refresh rate
+    actionTimer_ ->setInterval(1000); // cargo ship "turn"
 
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
-
+    QObject::connect(actionTimer_, &QTimer::timeout, props_, &GameProperties::tick);
+//    QObject::connect(props_->getHandler(), &Common::IEventHandler::distressOn,
+//                     this, &MainWindow::reactToSignal);
 
     frameTimer_->start();
+    actionTimer_->start();
 
 }
 
@@ -58,50 +65,47 @@ void MainWindow::followShip() {
 
 void MainWindow::checkCollision() {
 
-//    ui->graphicsView->setFocus();
-//    frameTimer_->stop();
 
-//    ship_->setFocus();
-//    frameTimer->start()
     QGraphicsItem* starsystempointer = ship_->collidingItems()[0];
     starsystemobject* starSystem = dynamic_cast<starsystemobject*>(starsystempointer);
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
     std::string starSystemName = starSystemptr->getName();
     if ( props_->getGalaxy()->getShipsInStarSystem(starSystemName).size() != 0 ) {
         frameTimer_->stop();
-//        this->hide();
+
         encounter *enC = new encounter;
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
         enC->exec();
-        ship_->moveBy(50, 50);
+        ship_->moveBy(100, 100);
         frameTimer_->start();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
-        std::cout << starSystemptr->getName() << std::endl;
         props_->getRunner()->spawnShips(1);
-//    } else {
-//        QMessageBox starSystemNoInterest;
-//        starSystemNoInterest.setText("There seems to be nothing of interest here");
-//        starSystemNoInterest.exec();
+
+    } else {
+        QMessageBox starSystemNoInterest;
+        starSystemNoInterest.setText("There seems to be nothing of interest here");
+        starSystemNoInterest.exec();
+        ship_->moveBy(100, 100);
     }
 
-//    std::cout << ship_->collidingItems().size() << std::endl;
-//    std::string starSystemName = starSystem->getName();
-//    std::cout << starSystem->getStarSystem()->getName() << std::endl;
 }
 
 void MainWindow::tick() {
-    props_->tick();
+
     ui->graphicsView->viewport()->update();
 
 }
+
+//void MainWindow::reactToSignal(std::shared_ptr<Common::Ship> ship) {
+//    std::cout << "distress signal detected beep boop spoop" << std::endl;
+//}
 
 // TODO
 // Reaktio distress-signaaliin
 // encounterin pisteiden välittäminen statisticsille
 // ajastin
 // game over
-// nothing of interest here
-// makeactions ja doactions
-// alusten spawnaus muuallekin kuin kahteen economy typeen
+// töttöröö
 // asianmukaisesti vaihtuva kuva encounteriin
+// galaxyn catchit

@@ -27,6 +27,7 @@ public:
     void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
     void successfulEncounter();
 
+    void setStatistics(Student::Statistics &stats);
 private:
     Ui::encounter *ui;
     std::shared_ptr<Common::StarSystem> currentStarSystem_;

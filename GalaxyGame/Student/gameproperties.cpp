@@ -11,6 +11,7 @@ void GameProperties::setProperties() {
     handler_ = handler;
     galaxy_ = galaxy;
     gameRunner_ = gameRunner;
+
 //    gameRunner_->spawnShips(150);
 }
 

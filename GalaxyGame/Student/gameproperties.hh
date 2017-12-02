@@ -9,14 +9,16 @@
 
 
 
-class GameProperties
+class GameProperties: public QObject
 {
+    Q_OBJECT
 public:
     GameProperties();
     void setProperties();
     std::shared_ptr<Common::IEventHandler> getHandler();
     std::shared_ptr<Student::Galaxy> getGalaxy();
     std::shared_ptr<Common::IGameRunner> getRunner();
+public slots:
     void tick();
 private:
     std::shared_ptr<Common::IEventHandler> handler_;

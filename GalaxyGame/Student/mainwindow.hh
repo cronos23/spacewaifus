@@ -34,18 +34,22 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void startTimers();
 private:
     Ui::MainWindow *ui;
     player_ship *ship_;
-    QTimer *frameTimer_;
     QTimer *actionTimer_;
+    QTimer *frameTimer_;
+    QTimer *gameTimer_;
     GameProperties *props_;
+    Student::Statistics *stats_;
 
 private slots:
-//    void reactToSignal(std::shared_ptr<Common::Ship> ship);
+    void reactToDistress(std::shared_ptr<Common::Ship> ship);
     void followShip();
     void checkCollision();
     void tick();
+    void GameOver();
 };
 
 #endif // MAINWINDOW_HH

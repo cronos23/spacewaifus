@@ -5,9 +5,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     ship_(new player_ship),
-    frameTimer_(new QTimer),
     actionTimer_(new QTimer),
-    props_(new GameProperties)
+    frameTimer_(new QTimer),
+    gameTimer_(new QTimer),
+    props_(new GameProperties),
+    stats_(new Student::Statistics)
 
 {
 
@@ -36,18 +38,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->centerOn(ship_);
 
     frameTimer_->setInterval(16); // Locked refresh rate
-    actionTimer_ ->setInterval(1000); // cargo ship "turn"
+    actionTimer_ ->setInterval(15000); // cargo ship "turn"
+    gameTimer_->setSingleShot(true);
+    gameTimer_->setInterval(360000);
 
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
-    QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
     QObject::connect(actionTimer_, &QTimer::timeout, props_, &GameProperties::tick);
-//    QObject::connect(props_->getHandler(), &Common::IEventHandler::distressOn,
-//                     this, &MainWindow::reactToSignal);
+    QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
+    QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
+    QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
+                     this, &MainWindow::reactToDistress);
 
-    frameTimer_->start();
-    actionTimer_->start();
 
 }
 
@@ -97,12 +100,32 @@ void MainWindow::tick() {
 
 }
 
-//void MainWindow::reactToSignal(std::shared_ptr<Common::Ship> ship) {
-//    std::cout << "distress signal detected beep boop spoop" << std::endl;
+void MainWindow::GameOver() {
+//    GameOver *gameOver = new GameOver;
+//    gameOver->setPoints(stats_->getPoints());
+//    gameOver->setWaifus(stats_->getSavedShips());
+//    gameOver->show();
+}
+
+void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
+    std::ostringstream distressInfo;
+    distressInfo << "Distress signal detected!" <<
+                    "\n Location: " << ship->getLocation()->getName();
+    std::string distressInfostr = distressInfo.str();
+    ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
+}
+
+//void MainWindow::reactToStoppedDistress(std::shared_ptr<Common::Ship> ship) {
+
 //}
 
+void MainWindow::startTimers() {
+    actionTimer_->start();
+    frameTimer_->start();
+    gameTimer_->start();
+}
+
 // TODO
-// Reaktio distress-signaaliin
 // encounterin pisteiden välittäminen statisticsille
 // ajastin
 // game over

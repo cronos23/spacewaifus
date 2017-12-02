@@ -15,13 +15,14 @@ class GameProperties: public QObject
 public:
     GameProperties();
     void setProperties();
-    std::shared_ptr<Common::IEventHandler> getHandler();
+    Student::EventHandler *getHandler();
     std::shared_ptr<Student::Galaxy> getGalaxy();
     std::shared_ptr<Common::IGameRunner> getRunner();
 public slots:
     void tick();
+    void reactToDistress(std::shared_ptr<Common::Ship> ship);
 private:
-    std::shared_ptr<Common::IEventHandler> handler_;
+    Student::EventHandler* handler_;
     std::shared_ptr<Student::Galaxy> galaxy_;
     std::shared_ptr<Common::IGameRunner> gameRunner_;
 };

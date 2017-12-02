@@ -26,6 +26,7 @@ mainmenu::~mainmenu()
 
 void mainmenu::newGame()
 {
+    mainWin->startTimers();
     mainWin->show();
     this->close();
 }

@@ -308,12 +308,12 @@ void encounter::firstRightDialog()
 void encounter::successfulEncounter()
 {
     ui->response_label->setText("*You have succeeded in the art of seduction.*");
-    QObject::disconnect(ui->option1_button, &QPushButton::clicked,
-                     this, &encounter::rejection);
-    QObject::disconnect(ui->option2_button, &QPushButton::clicked,
-                     this, &encounter::rejection);
-    QObject::disconnect(ui->option3_button, &QPushButton::clicked,
-                     this, &encounter::rejection);
+//    QObject::disconnect(ui->option1_button, &QPushButton::clicked,
+//                     this, &encounter::rejection);
+//    QObject::disconnect(ui->option2_button, &QPushButton::clicked,
+//                     this, &encounter::rejection);
+//    QObject::disconnect(ui->option3_button, &QPushButton::clicked,
+//                     this, &encounter::rejection);
     QObject::connect(ui->info_button, &QPushButton::clicked,
                      this, &encounter::close);
     ui->option1_button->setEnabled(false);

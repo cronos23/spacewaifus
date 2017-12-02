@@ -113,21 +113,15 @@ void MainWindow::tick() {
 
     int minutes;
     int seconds;
-    if (gameTimer_->remainingTime() >= 0) {
 
-        //Convert milliseconds to M:S
-        minutes = (gameTimer_->remainingTime() % (1000*60*60)) / (1000*60);
-        seconds = ((gameTimer_->remainingTime() % (1000*60*60)) % (1000*60)) / 1000;
+    //Convert milliseconds to M:S
+    minutes = (gameTimer_->remainingTime() % (1000*60*60)) / (1000*60);
+    seconds = ((gameTimer_->remainingTime() % (1000*60*60)) % (1000*60)) / 1000;
 
-        ui->minutes_LCD->display(minutes);
-        ui->seconds_LCD->display(seconds);
+    ui->minutes_LCD->display(minutes);
+    ui->seconds_LCD->display(seconds);
 
-        if (gameTimer_->remainingTime() <= 0) {
-            GameOver();
-        }
-    } else {
-        GameOver();
-    }
+
 }
 
 void MainWindow::GameOver() {
@@ -135,6 +129,7 @@ void MainWindow::GameOver() {
     gameOver->setPoints(stats_->getPoints());
     gameOver->setDatedShips(stats_->getSavedShips());
     gameOver->setRejections(stats_->getLostShips());
+    this->close();
     gameOver->show();
 }
 
@@ -159,7 +154,3 @@ void MainWindow::startTimers() {
     frameTimer_->start();
 }
 
-// TODO
-// ajastin
-// game over
-// galaxyn catchit???

@@ -18,9 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Setting up backend
 
     Common::utilityInit(time(NULL));
-
     props_->setProperties();
-
     props_->getRunner()->spawnShips(150);
 
 
@@ -50,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
     QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
                      this, &MainWindow::reactToDistress);
-
+//    QObject::connect(props_->getHandler(), &Student::EventHandler::ExecutionException, this, &MainWindow::testPrint);
 
     ui->credits_LCD->display(stats_->getCreditBalance());
     ui->lost_LCD->display((int) stats_->getLostShips());
@@ -85,6 +83,7 @@ void MainWindow::checkCollision() {
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
         enC->exec();
+        enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);
         frameTimer_->start();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
@@ -121,9 +120,6 @@ void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
     ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
 }
 
-//void MainWindow::reactToStoppedDistress(std::shared_ptr<Common::Ship> ship) {
-
-//}
 
 void MainWindow::startTimers() {
     actionTimer_->start();
@@ -132,9 +128,6 @@ void MainWindow::startTimers() {
 }
 
 // TODO
-// encounterin pisteiden välittäminen statisticsille
 // ajastin
 // game over
-// töttöröö
-// asianmukaisesti vaihtuva kuva encounteriin
 // galaxyn catchit

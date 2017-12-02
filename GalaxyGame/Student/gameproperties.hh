@@ -20,7 +20,6 @@ public:
     std::shared_ptr<Common::IGameRunner> getRunner();
 public slots:
     void tick();
-    void reactToDistress(std::shared_ptr<Common::Ship> ship);
 private:
     Student::EventHandler* handler_;
     std::shared_ptr<Student::Galaxy> galaxy_;

@@ -4,6 +4,7 @@ GameProperties::GameProperties() {
 }
 
 void GameProperties::setProperties() {
+
     std::shared_ptr<Student::EventHandler> handler = std::make_shared<Student::EventHandler>();
     std::shared_ptr<Student::Galaxy> galaxy = std::make_shared<Student::Galaxy>();
     std::shared_ptr<Common::IGameRunner> gameRunner = Common::getGameRunner(galaxy, handler);
@@ -30,8 +31,4 @@ std::shared_ptr<Common::IGameRunner> GameProperties::getRunner() {
 void GameProperties::tick() {
     gameRunner_->createActions();
     gameRunner_->doActions();
-}
-
-void GameProperties::reactToDistress(std::shared_ptr<Common::Ship> ship) {
-
 }

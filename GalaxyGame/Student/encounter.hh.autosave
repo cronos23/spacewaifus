@@ -38,12 +38,8 @@ public:
 private:
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
-<<<<<<< HEAD
-    std::shared_ptr<Common::StarSystem> currentStarSystem_;
-    std::string returnableOutcome_;
-=======
     Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
->>>>>>> 7e24bd36cb3cabc8d7c2f3bad7391cf40376386d
+
 };
 
 #endif // ENCOUNTER_HH

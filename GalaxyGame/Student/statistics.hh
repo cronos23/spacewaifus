@@ -26,7 +26,7 @@ public:
      int getCreditBalance() const;
 
 private:
-    int credits_ = 0;
+    int credits_ = 1000;
     unsigned graveyard_ = 0;
     unsigned saved_ = 0;
     unsigned int points_ = 0;

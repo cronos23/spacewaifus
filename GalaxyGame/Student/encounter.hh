@@ -39,7 +39,7 @@ private:
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
     std::shared_ptr<Common::StarSystem> currentStarSystem_;
-    std::string outcome_;
+    std::string returnableOutcome_;
 };
 
 #endif // ENCOUNTER_HH

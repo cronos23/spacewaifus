@@ -106,10 +106,11 @@ void MainWindow::tick() {
 }
 
 void MainWindow::GameOver() {
-//    GameOver *gameOver = new GameOver;
-//    gameOver->setPoints(stats_->getPoints());
-//    gameOver->setWaifus(stats_->getSavedShips());
-//    gameOver->show();
+    game_over *gameOver = new game_over;
+    gameOver->setPoints(stats_->getPoints());
+    gameOver->setDatedShips(stats_->getSavedShips());
+    gameOver->setRejections(stats_->getLostShips());
+    gameOver->show();
 }
 
 void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {

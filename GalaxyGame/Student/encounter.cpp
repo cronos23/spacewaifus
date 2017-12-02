@@ -268,11 +268,14 @@ void encounter::successfulEncounter()
     ui->option2_button->setEnabled(false);
     ui->option3_button->setEnabled(false);
     ui->info_button->setEnabled(false);
+    ui->option2_button->setText("");
+    ui->option3_button->setText("");
+    ui->info_button->setText("");
 }
 
 std::string encounter::returnOutcome()
 {
-    return outcome_;
+    return returnableOutcome_;
 }
 
 

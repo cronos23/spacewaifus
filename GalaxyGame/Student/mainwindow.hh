@@ -22,6 +22,7 @@
 #include "starsystemobject.hh"
 #include "utility.hh"
 #include "statistics.hh"
+#include "game_over.hh"
 
 namespace Ui {
 class MainWindow;

@@ -332,6 +332,7 @@ void encounter::successfulEncounter()
         outcome_ = SavedWealthy;
     }
 
+
 }
 
 

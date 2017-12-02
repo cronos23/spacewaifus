@@ -26,7 +26,8 @@ SOURCES += \
     controls.cpp \
     encounter.cpp \
     mainwindowutility.cpp \
-    gameproperties.cpp
+    gameproperties.cpp \
+    game_over.cpp
 
 
 
@@ -43,7 +44,8 @@ HEADERS  += \
     controls.hh \
     encounter.hh \
     mainwindowutility.hh \
-    gameproperties.hh
+    gameproperties.hh \
+    game_over.hh
 
 
 
@@ -86,7 +88,8 @@ FORMS += \
     mainwindow.ui \
     mainmenu.ui \
     controls.ui \
-    encounter.ui
+    encounter.ui \
+    game_over.ui
 
 RESOURCES += \
     resources.qrc

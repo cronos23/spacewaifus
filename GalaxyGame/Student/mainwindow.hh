@@ -21,6 +21,7 @@
 #include "player_ship.hh"
 #include "starsystemobject.hh"
 #include "utility.hh"
+#include "statistics.hh"
 
 namespace Ui {
 class MainWindow;
@@ -39,6 +40,7 @@ private:
     player_ship *ship_;
     QTimer *frameTimer_;
     GameProperties *props_;
+    Student::Statistics *stats_;
 
 private slots:
     void followShip();

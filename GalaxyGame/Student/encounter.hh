@@ -26,10 +26,12 @@ public:
     void infoDialog();
     void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
     void successfulEncounter();
+    std::string returnOutcome();
 
 private:
     Ui::encounter *ui;
     std::shared_ptr<Common::StarSystem> currentStarSystem_;
+    std::string outcome_;
 };
 
 #endif // ENCOUNTER_HH

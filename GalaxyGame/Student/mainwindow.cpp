@@ -6,7 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     ship_(new player_ship),
     frameTimer_(new QTimer),
-    props_(new GameProperties)
+    props_(new GameProperties),
+    stats_(new Student::Statistics)
 
 {
 
@@ -39,6 +40,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
 
     frameTimer_->start();
+
+    ui->credits_LCD->display(stats_->getCreditBalance());
+    ui->lost_LCD->display((int) stats_->getLostShips());
+    ui->saved_LCD->display((int) stats_->getSavedShips());
+    ui->score_LCD->display((int) stats_->getPoints());
 
 }
 

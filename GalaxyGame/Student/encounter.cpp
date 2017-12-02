@@ -28,6 +28,7 @@ void encounter::setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSyste
     currentStarSystem_ = givenStarSystem;
 }
 
+
 void encounter::rejection()
 {
 //    QPixmap waifuPic;
@@ -263,6 +264,11 @@ void encounter::successfulEncounter()
     ui->option2_button->setEnabled(false);
     ui->option3_button->setEnabled(false);
     ui->info_button->setEnabled(false);
+}
+
+std::string encounter::returnOutcome()
+{
+    return outcome_;
 }
 
 

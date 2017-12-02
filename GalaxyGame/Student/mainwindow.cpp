@@ -93,6 +93,10 @@ void MainWindow::checkCollision() {
         startTimers();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
         props_->getRunner()->spawnShips(1);
+        ui->credits_LCD->display(stats_->getCreditBalance());
+        ui->lost_LCD->display((int) stats_->getLostShips());
+        ui->saved_LCD->display((int) stats_->getSavedShips());
+        ui->score_LCD->display((int) stats_->getPoints());
 
     } else {
         QMessageBox starSystemNoInterest;

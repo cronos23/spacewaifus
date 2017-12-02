@@ -2,9 +2,10 @@
 #define ENCOUNTER_HH
 
 #include <QDialog>
+#include <QMessageBox>
+#include <QPixmap>
 #include <QWidget>
 #include "starsystem.hh"
-#include <QPixmap>
 #include "statistics.hh"
 
 
@@ -37,7 +38,7 @@ public:
 private:
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
-    std::shared_ptr<Common::StarSystem> currentStarSystem_;
+    Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
 };
 
 #endif // ENCOUNTER_HH

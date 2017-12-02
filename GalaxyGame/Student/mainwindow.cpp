@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
     QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
                      this, &MainWindow::reactToDistress);
-
+//    QObject::connect(props_->getHandler(), &Student::EventHandler::ExecutionException, this, &MainWindow::testPrint);
 
 }
 
@@ -80,6 +80,7 @@ void MainWindow::checkCollision() {
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
         enC->exec();
+        enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);
         frameTimer_->start();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
@@ -115,9 +116,6 @@ void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
     ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
 }
 
-//void MainWindow::reactToStoppedDistress(std::shared_ptr<Common::Ship> ship) {
-
-//}
 
 void MainWindow::startTimers() {
     actionTimer_->start();

@@ -40,8 +40,11 @@ void Student::Statistics::addCredits(unsigned amount) {
 }
 
 void Student::Statistics::reduceCredits(unsigned amount) {
-    if ( amount - credits_ > MAX_LOAN_ALLOWANCE ) {
-        throw Common::StateException( "Maximum loan allowance exceeded");
+    int signed_amount = (int) amount;
+    if ( credits_ < signed_amount) {
+        if ( amount - credits_ > MAX_LOAN_ALLOWANCE ) {
+            throw Common::StateException( "Maximum loan allowance exceeded");
+        }
     }
     credits_ -= amount;
 }

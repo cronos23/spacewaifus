@@ -310,6 +310,11 @@ void encounter::successfulEncounter()
 
 }
 
+std::string encounter::returnOutcome()
+{
+    return outcome_;
+}
+
 
 
 

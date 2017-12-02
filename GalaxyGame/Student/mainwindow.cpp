@@ -52,6 +52,11 @@ MainWindow::MainWindow(QWidget *parent) :
                      this, &MainWindow::reactToDistress);
 //    QObject::connect(props_->getHandler(), &Student::EventHandler::ExecutionException, this, &MainWindow::testPrint);
 
+    ui->credits_LCD->display(stats_->getCreditBalance());
+    ui->lost_LCD->display((int) stats_->getLostShips());
+    ui->saved_LCD->display((int) stats_->getSavedShips());
+    ui->score_LCD->display((int) stats_->getPoints());
+
 }
 
 MainWindow::~MainWindow()

@@ -21,6 +21,7 @@
 #include "player_ship.hh"
 #include "starsystemobject.hh"
 #include "utility.hh"
+#include "statistics.hh"
 
 namespace Ui {
 class MainWindow;

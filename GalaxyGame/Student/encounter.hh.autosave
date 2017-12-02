@@ -27,7 +27,6 @@ public:
     void infoDialog();
     void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
     void successfulEncounter();
-    std::string returnOutcome();
 
     void setStatistics(Student::Statistics &stats);
     enum OUTCOME {
@@ -39,12 +38,7 @@ public:
 private:
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
-<<<<<<< HEAD
     Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
-=======
-    std::shared_ptr<Common::StarSystem> currentStarSystem_;
-    std::string outcome_;
->>>>>>> f5b3cdea80332b98a9928e53e91a3fab6b033706
 };
 
 #endif // ENCOUNTER_HH

@@ -29,6 +29,7 @@ highscores::~highscores()
     delete ui;
 }
 
+
 std::vector<struct highscores::playerScore> highscores::readFile() {
     std::vector<playerScore> scoreVector;
     std::string currentrow;
@@ -92,3 +93,4 @@ void highscores::writeToFile() {
 bool highscores::less_than_score(const highscores::playerScore & a, const highscores::playerScore & b) {
     return ((int)a.score > (int)b.score);
 }
+

@@ -12,6 +12,7 @@
 #include <vector>
 #include "ioexception.hh"
 
+
 namespace Ui {
 class highscores;
 }
@@ -27,6 +28,7 @@ class highscores : public QWidget
 public:
     explicit highscores(QWidget *parent = 0);
     ~highscores();
+
     /**
      * @brief This utility function checks if the score given to it as a parameter is enough to reach the
      * top10.

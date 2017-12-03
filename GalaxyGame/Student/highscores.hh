@@ -2,6 +2,7 @@
 #define HIGHSCORES_HH
 
 #include <QWidget>
+#include <fstream>
 
 namespace Ui {
 class highscores;
@@ -14,6 +15,8 @@ class highscores : public QWidget
 public:
     explicit highscores(QWidget *parent = 0);
     ~highscores();
+    void readScores();
+    void writeScores();
 
 private:
     Ui::highscores *ui;

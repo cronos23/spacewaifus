@@ -12,3 +12,10 @@ highscores::~highscores()
 {
     delete ui;
 }
+
+//void highscores::readScores()
+//{
+//    ifstream file;
+//    file.open("leaderboard.txt");
+
+//}

@@ -23,7 +23,6 @@ public:
     explicit encounter(QWidget *parent = 0);
     ~encounter();
     void setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem);
-    void setCorrectAnswer();
 
     void setStatistics(Student::Statistics &stats);
     enum OUTCOME {
@@ -39,9 +38,10 @@ private slots:
     void successfulEncounter();
 
 private:
+    void setCorrectAnswer();
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
-    Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
+    std::string waifuType_;
 
 };
 

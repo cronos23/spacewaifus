@@ -85,7 +85,6 @@ void MainWindow::checkCollision() {
         stopTimers();
         encounter *enC = new encounter;
         enC->setStarSystem(starSystemptr);
-        enC->setCorrectAnswer();
         enC->exec();
         enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);

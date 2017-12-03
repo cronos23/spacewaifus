@@ -40,6 +40,7 @@ private:
     encounter::OUTCOME outcome_;
     Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
 
+
 };
 
 #endif // ENCOUNTER_HH

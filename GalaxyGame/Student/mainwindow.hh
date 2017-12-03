@@ -43,8 +43,10 @@ private:
     QTimer *actionTimer_;
     QTimer *frameTimer_;
     QTimer *gameTimer_;
+    int remaining_time_on_pause_;
     GameProperties *props_;
     Student::Statistics *stats_;
+    void stopTimers();
 
 private slots:
     void reactToDistress(std::shared_ptr<Common::Ship> ship);

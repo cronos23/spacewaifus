@@ -60,9 +60,13 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
 
-    delete frameTimer_;
-    delete ship_;
     delete ui;
+    delete ship_;
+    delete actionTimer_;
+    delete frameTimer_;
+    delete gameTimer_;
+    delete props_;
+    delete stats_;
 }
 
 void MainWindow::followShip() {
@@ -77,17 +81,22 @@ void MainWindow::checkCollision() {
     std::shared_ptr<Common::StarSystem> starSystemptr = starSystem->getStarSystem();
     std::string starSystemName = starSystemptr->getName();
     if ( props_->getGalaxy()->getShipsInStarSystem(starSystemName).size() != 0 ) {
-        frameTimer_->stop();
 
+        stopTimers();
         encounter *enC = new encounter;
         enC->setStarSystem(starSystemptr);
         enC->setCorrectAnswer();
         enC->exec();
         enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);
-        frameTimer_->start();
+        gameTimer_->setInterval(remaining_time_on_pause_);
+        startTimers();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
         props_->getRunner()->spawnShips(1);
+        ui->credits_LCD->display(stats_->getCreditBalance());
+        ui->lost_LCD->display((int) stats_->getLostShips());
+        ui->saved_LCD->display((int) stats_->getSavedShips());
+        ui->score_LCD->display((int) stats_->getPoints());
 
     } else {
         QMessageBox starSystemNoInterest;
@@ -102,6 +111,17 @@ void MainWindow::tick() {
 
     ui->graphicsView->viewport()->update();
 
+    int minutes;
+    int seconds;
+
+    //Convert milliseconds to M:S
+    minutes = (gameTimer_->remainingTime() % (1000*60*60)) / (1000*60);
+    seconds = ((gameTimer_->remainingTime() % (1000*60*60)) % (1000*60)) / 1000;
+
+    ui->minutes_LCD->display(minutes);
+    ui->seconds_LCD->display(seconds);
+
+
 }
 
 void MainWindow::GameOver() {
@@ -109,6 +129,7 @@ void MainWindow::GameOver() {
     gameOver->setPoints(stats_->getPoints());
     gameOver->setDatedShips(stats_->getSavedShips());
     gameOver->setRejections(stats_->getLostShips());
+    this->close();
     gameOver->show();
 }
 
@@ -120,14 +141,16 @@ void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
     ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
 }
 
+void MainWindow::stopTimers() {
+    actionTimer_->stop();
+    frameTimer_->stop();
+    remaining_time_on_pause_ = gameTimer_->remainingTime();
+    gameTimer_->stop();
+}
 
 void MainWindow::startTimers() {
     actionTimer_->start();
-    frameTimer_->start();
     gameTimer_->start();
+    frameTimer_->start();
 }
 
-// TODO
-// ajastin
-// game over
-// galaxyn catchit

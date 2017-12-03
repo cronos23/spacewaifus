@@ -23,7 +23,7 @@ encounter::~encounter()
     delete ui;
 }
 
-void encounter::setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem)
+void encounter::setWaifuType(std::shared_ptr<Common::StarSystem> givenStarSystem)
 {
     Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy = givenStarSystem->getEconomy();
     MainWindowUtility util;
@@ -70,7 +70,7 @@ void encounter::rejection()
     ui->info_button->setEnabled(false);
 }
 
-void encounter::setStatistics(Student::Statistics &stats) {
+void encounter::updateStatistics(Student::Statistics &stats) {
     if (outcome_ == Lost) {
         stats.addLostShip();
     } else if (outcome_ == SavedNormal) {

@@ -82,9 +82,9 @@ void MainWindow::checkCollision() {
 
         stopTimers();
         encounter *enC = new encounter;
-        enC->setStarSystem(starSystemptr);
+        enC->setWaifuType(starSystemptr);
         enC->exec();
-        enC->setStatistics(*stats_);
+        enC->updateStatistics(*stats_);
         ship_->moveBy(100, 100);
         ui->coordx_LCD->display(ship_->x());
         ui->coordy_LCD->display(-ship_->y());

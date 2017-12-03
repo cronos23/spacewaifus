@@ -52,7 +52,8 @@ void MainWindowUtility::setupShip(player_ship &ship) {
 }
 
 void MainWindowUtility::setupTimers(QTimer &frametimer, QTimer &actiontimer, QTimer &gametimer) {
-    frametimer.setInterval(16); // Locked refresh rate
+    assert(FRAME_INTERVAL == 16);
+    frametimer.setInterval(FRAME_INTERVAL); // Locked refresh rate
     actiontimer.setInterval(2500); // cargo ship "turn"
     gametimer.setSingleShot(true);
     gametimer.setInterval(180000);

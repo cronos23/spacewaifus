@@ -10,7 +10,6 @@
 #include "statistics.hh"
 
 /**
- * @file
  * @brief Encounter with waifu/spaceship.
  */
 
@@ -44,14 +43,19 @@ public:
     /**
      * @brief Sets the correct waifu_type_ private attribute for the current encounter.
      * @param The waifu type is determined by accessing the ECONOMY_TYPE of the given star system.
+     * @post Exception guarantee: nothrow
      */
     void setWaifuType(std::shared_ptr<Common::StarSystem> givenStarSystem);
     /**
-     * @brief
-     * @param stats
+     * @brief Updates statistics according to the outcome of the encounter.
+     * @param A reference to the statistics object created in mainWindow is given to the function for updating.
+     * @pre outcome_ must be set to a value.
+     * @post Exception guarantee: nothrow
      */
-
     void updateStatistics(Student::Statistics &stats);
+    /**
+     * @brief The OUTCOME enum has values for all different possible outcomes of the encounter dialog.
+     */
     enum OUTCOME {
         SavedNormal,
         SavedWealthy,
@@ -59,15 +63,51 @@ public:
         Lost
     };
 private slots:
+    /**
+     * @brief Rejection is called when an incorrect option is chosen by the player. It sets the outcome_ to Lost
+     * and ends the encounter when the player chooses to leave.
+     * @pre Encounter has to have a waifu_type_ set by setWaifuType
+     * @post Exception guarantee: nothrow
+     */
     void rejection();
+    /**
+     * @brief Called when info_button is clicked in the first dialog. Shows the player info, which is selected
+     * according to the encounters waifu_type_.
+     * @pre Encounter has to have a waifu_type_ set by setWaifuType
+     * @post Exception guarantee: nothrow
+     */
     void infoDialog();
-    void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
+    /**
+     * @brief Called if the player chooses correctly in the first dialog. Sets the new dialog options according
+     * to waifu_type_
+     * @pre Encounter has to have a waifu_type_ set by setWaifuType
+     * @post Exception guarantee: nothrow
+     */
+    void firstRightDialog();
+    /**
+     * @brief Called if the player chooses correctly after firstRightDialog is called. Sets outcome_ to either
+     * SavedNormal, SavedWealthy or SavedBribe according to waifu_type_.
+     * @pre Encounter has to have a waifu_type_ set by setWaifuType
+     * @post Exception guarantee: nothrow
+     */
     void successfulEncounter();
 
 private:
+    /**
+     * @brief Called in setWaifuType. Connects one of the dialog buttons to succesfulEncounter according to
+     * waifu_type_.
+     * @pre Encounter has to have a waifu_type_ set by setWaifuType
+     * @post Exception guarantee: nothrow
+     */
     void setCorrectAnswer();
     Ui::encounter *ui;
+    /**
+     * @brief Stores the outcome of the encounter so statistics can be updated correctly in updateStatistics.
+     */
     encounter::OUTCOME outcome_;
+    /**
+     * @brief Stores the waifu type set by setWaifuType. Used for updating statistics in updateStatistics.
+     */
     std::string waifuType_;
 
 };

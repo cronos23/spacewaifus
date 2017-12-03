@@ -320,22 +320,5 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>Quit_Button</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1780</x>
-     <y>810</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1838</x>
-     <y>763</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

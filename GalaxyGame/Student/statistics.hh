@@ -1,6 +1,7 @@
 #ifndef STATISTICS_HH
 #define STATISTICS_HH
 
+#include "assert.h"
 #include "istatistics.hh"
 #include "stateexception.hh"
 

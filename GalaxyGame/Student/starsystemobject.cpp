@@ -1,15 +1,10 @@
 #include "starsystemobject.hh"
 
-QRectF starsystemobject::boundingRect() const {
-    return QRectF(0, 0, starsystemsize_, starsystemsize_);
-}
-
-
 
 void starsystemobject::setSizeByPop() {
     int population = starsystemptr_->getPopulation();
     if (population <= 200000) {
-        starsystemsize_ = 20;
+        starsystemsize_ = 30;
 
     } else if (population <= 2000000){
         starsystemsize_ = 40;

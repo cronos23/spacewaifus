@@ -5,9 +5,9 @@
 mainmenu::mainmenu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mainmenu),
-    mainWin(new MainWindow),
-    controlsWin(new controls),
-    scoresWin(new highscores)
+    mainWin_(new MainWindow),
+    controlsWin_(new controls),
+    scoresWin_(new highscores)
 {
     ui->setupUi(this);
 
@@ -24,25 +24,25 @@ mainmenu::mainmenu(QWidget *parent) :
 mainmenu::~mainmenu()
 {
     delete ui;
-    delete mainWin;
-    delete controlsWin;
-    delete scoresWin;
+    delete mainWin_;
+    delete controlsWin_;
+    delete scoresWin_;
 }
 
 void mainmenu::newGame()
 {
-    mainWin->startTimers();
-    mainWin->show();
+    mainWin_->startTimers();
+    mainWin_->show();
     this->close();
 }
 
 void mainmenu::openControls()
 {
-    controlsWin->exec();
+    controlsWin_->exec();
 }
 
 void mainmenu::openScores()
 {
-    scoresWin->show();
+    scoresWin_->show();
 }
 

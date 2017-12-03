@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(actionTimer_, &QTimer::timeout, props_, &GameProperties::tick);
     QObject::connect(frameTimer_, &QTimer::timeout, this, &MainWindow::tick);
     QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
+    QObject::connect(ui->Quit_Button, &QPushButton::clicked, this, &MainWindow::GameOver);
     QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
                      this, &MainWindow::reactToDistress);
 
@@ -50,6 +51,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lost_LCD->display((int) stats_->getLostShips());
     ui->saved_LCD->display((int) stats_->getSavedShips());
     ui->score_LCD->display((int) stats_->getPoints());
+    ui->coordx_LCD->display(ship_->x());
+    ui->coordy_LCD->display(-ship_->y());
 
 }
 
@@ -113,7 +116,7 @@ void MainWindow::tick() {
     int minutes;
     int seconds;
 
-    //Convert milliseconds to M:S
+    // Convert milliseconds to minutes and seconds.
     minutes = (gameTimer_->remainingTime() % (1000*60*60)) / (1000*60);
     seconds = ((gameTimer_->remainingTime() % (1000*60*60)) % (1000*60)) / 1000;
 
@@ -125,6 +128,7 @@ void MainWindow::tick() {
 
 void MainWindow::GameOver() {
     game_over *gameOver = new game_over;
+    gameTimer_->stop();
     gameOver->setPoints(stats_->getPoints());
     gameOver->setDatedShips(stats_->getSavedShips());
     gameOver->setRejections(stats_->getLostShips());

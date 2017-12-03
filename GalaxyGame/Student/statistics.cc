@@ -40,6 +40,7 @@ void Student::Statistics::addCredits(unsigned amount) {
 }
 
 void Student::Statistics::reduceCredits(unsigned amount) {
+    assert(MAX_LOAN_ALLOWANCE == 1000);
     int signed_amount = (int) amount;
     if ( credits_ < signed_amount) {
         if ( amount - credits_ > MAX_LOAN_ALLOWANCE ) {

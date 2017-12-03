@@ -7,6 +7,10 @@ namespace Ui {
 class controls;
 }
 
+/**
+ * @brief A simple QDialog used to show tips and controls to the player, accessible to the
+ * player via a button in the main menu.
+ */
 class controls : public QDialog
 {
     Q_OBJECT

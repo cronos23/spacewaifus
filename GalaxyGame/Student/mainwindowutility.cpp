@@ -24,8 +24,8 @@ QGraphicsScene* MainWindowUtility::createGalaxies(std::shared_ptr<Student::Galax
         starSystem->setPos(coords.x * 200, coords.y * 200);
         std::ostringstream toolTipInfo;
         toolTipInfo << currentStarSystem->getName() << "\n"
-                    << "Coordinates: " << currentStarSystem->getCoordinates().x
-                    << ", " << currentStarSystem->getCoordinates().y
+                    << "Coordinates: " << coords.x * 200
+                    << ", " << -coords.y * 200
                     << "\n" << "Population: " << currentStarSystem->getPopulation() <<
                        "\n" << "Type of possible waifu: " << getWaifuType(currentStarSystem->getEconomy());
         std::string toolTipInfostr = toolTipInfo.str();

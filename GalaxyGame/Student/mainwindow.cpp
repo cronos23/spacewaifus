@@ -43,7 +43,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
     QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
                      this, &MainWindow::reactToDistress);
-//    QObject::connect(props_->getHandler(), &Student::EventHandler::ExecutionException, this, &MainWindow::testPrint);
 
     ui->credits_LCD->display(stats_->getCreditBalance());
     ui->lost_LCD->display((int) stats_->getLostShips());
@@ -66,8 +65,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::followShip() {
     ui->graphicsView->ensureVisible(ship_, 100, 100);
-    ui->coordx_LCD->display(ship_->x() / 200);
-    ui->coordy_LCD->display(ship_->y() / 200);
+    ui->coordx_LCD->display(ship_->x());
+    ui->coordy_LCD->display(-ship_->y());
 }
 
 void MainWindow::checkCollision() {
@@ -85,8 +84,8 @@ void MainWindow::checkCollision() {
         enC->exec();
         enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);
-        ui->coordx_LCD->display(ship_->x() / 200);
-        ui->coordy_LCD->display(ship_->y() / 200);
+        ui->coordx_LCD->display(ship_->x());
+        ui->coordy_LCD->display(-ship_->y());
         gameTimer_->setInterval(remaining_time_on_pause_);
         startTimers();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);

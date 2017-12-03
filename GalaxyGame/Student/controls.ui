@@ -31,141 +31,107 @@
   <property name="windowTitle">
    <string>Controls and Tips</string>
   </property>
-  <widget class="QLabel" name="title_label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>831</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Serif</family>
-     <pointsize>22</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Controls and Tips</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="controlsTitle_label">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>110</y>
-     <width>151</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Serif</family>
-     <pointsize>18</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Controls</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="controls_label">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>170</y>
-     <width>711</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Serif</family>
-    </font>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Up arrow key - Move forward&lt;/p&gt;&lt;p&gt;Left/Right arrow key - Turn&lt;/p&gt;&lt;p&gt;Mouse wheel - Zoom&lt;/p&gt;&lt;p&gt;Click and drag with mouse - Move the map&lt;/p&gt;&lt;p&gt;Hover mouse over starsystem to get information about it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="tipsTitle_label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>330</y>
-     <width>151</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Serif</family>
-     <pointsize>18</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Tips</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="tips_label">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>390</y>
-     <width>721</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Serif</family>
-    </font>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game is to travel across different star systems to search for spaceships &lt;/p&gt;&lt;p&gt;to date. Your time is limited so act fast! The more spaceships you &amp;quot;befriend&amp;quot; &lt;/p&gt;&lt;p&gt;the more points you get! It's like speed dating. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancel_button">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>600</y>
-     <width>161</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Serif</family>
-     <pointsize>20</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="title_label">
+     <property name="font">
+      <font>
+       <family>Serif</family>
+       <pointsize>22</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Controls and Tips</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="controlsTitle_label">
+     <property name="font">
+      <font>
+       <family>Serif</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Controls</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="controls_label">
+     <property name="font">
+      <font>
+       <family>Serif</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Up arrow key - Move forward&lt;/p&gt;&lt;p&gt;Left/Right arrow key - Turn&lt;/p&gt;&lt;p&gt;Mouse wheel - Zoom&lt;/p&gt;&lt;p&gt;Click and drag with mouse - Move the map&lt;/p&gt;&lt;p&gt;Hover mouse over starsystem to get information about it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="tipsTitle_label">
+     <property name="font">
+      <font>
+       <family>Serif</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tips</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="tips_label">
+     <property name="font">
+      <font>
+       <family>Serif</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The point of the game is to travel across different star systems to search for spaceships &lt;/p&gt;&lt;p&gt;to date. Your time is limited so act fast! The more spaceships you &amp;quot;befriend&amp;quot; &lt;/p&gt;&lt;p&gt;the more points you get! It's like speed dating. &lt;/p&gt;&lt;p&gt;Every spaceship has a waifu-type that can give some &lt;/p&gt;&lt;p&gt;tips on what they might like. You can also just ask for more &lt;/p&gt;&lt;p&gt;information! &lt;/p&gt;&lt;p&gt;The rarer waifu-types can usually be found further away from&lt;/p&gt;&lt;p&gt;the galaxy's centre.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="cancel_button">
+     <property name="font">
+      <font>
+       <family>Serif</family>
+       <pointsize>20</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>

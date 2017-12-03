@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::highscores *ui;
+    struct playerScore
+    {
+        std::string name;
+        unsigned int score;
+    };
 };
 
 #endif // HIGHSCORES_HH

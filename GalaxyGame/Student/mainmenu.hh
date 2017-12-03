@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "mainwindow.hh"
 #include "controls.hh"
+#include "highscores.hh"
 
 namespace Ui {
 class mainmenu;
@@ -20,11 +21,13 @@ public:
 public slots:
     void newGame();
     void openControls();
+    void openScores();
 
 private:
     Ui::mainmenu *ui;
     MainWindow *mainWin;
     controls *controlsWin;
+    highscores *scoresWin;
 
 };
 

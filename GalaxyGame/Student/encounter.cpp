@@ -26,6 +26,13 @@ encounter::~encounter()
 void encounter::setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem)
 {
     currentStarSystemEconomy_ = givenStarSystem->getEconomy();
+    MainWindowUtility util;
+    std::string waifuType = util.getWaifuType(currentStarSystemEconomy_);
+    std::ostringstream responseText;
+    responseText << "A " << waifuType << " spaceship appears!" <<
+                    "\n\nIt says: Hey there~";
+    std::string responseTextstr = responseText.str();
+    ui->response_label->setText(QString::fromStdString(responseTextstr));
     QPixmap WaifuPic;
     if (currentStarSystemEconomy_ < 4) {
         WaifuPic.load(":/images/images/starship_teal.png");
@@ -204,9 +211,11 @@ void encounter::firstRightDialog()
         ui->response_label->setText("Wow, really?");
         ui->option1_button->setText("I wouldn't mind settling down with you.");
         ui->option2_button->setText("Did you say wealth?");
-        ui->option2_button->setEnabled(true); // Why is this needed?
+        ui->option2_button->setEnabled(true);
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
+        QObject::disconnect(ui->option1_button, &QPushButton::clicked,
+                         this, &encounter::firstRightDialog);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
                          this, &encounter::successfulEncounter);
         QObject::connect(ui->option2_button, &QPushButton::clicked,
@@ -237,7 +246,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("I like what I'm hearing.");
         ui->option1_button->setText("I'm a fast racer too.");
         ui->option2_button->setText("Can you teach me?");
-        ui->option2_button->setEnabled(true); // Why is this needed?
+        ui->option2_button->setEnabled(true);
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -251,7 +260,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("You have my attention..");
         ui->option1_button->setText("There's more to me than just money.");
         ui->option2_button->setText("*Offer more money*");
-        ui->option2_button->setEnabled(true); // Why is this needed?
+        ui->option2_button->setEnabled(true);
         ui->option3_button->setText("");
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
@@ -267,7 +276,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("You are so kawaii!");
         ui->option1_button->setText("What alien language is that?");
         ui->option2_button->setText("You're cute too.");
-        ui->option2_button->setEnabled(true); // Why is this needed?
+        ui->option2_button->setEnabled(true);
         ui->option3_button->setEnabled(false);
         ui->info_button->setEnabled(false);
         QObject::connect(ui->option1_button, &QPushButton::clicked,
@@ -280,7 +289,7 @@ void encounter::firstRightDialog()
         ui->response_label->setText("Omae Wa Mou Shindeiru");
         ui->option1_button->setText("NANI!?");
         ui->option2_button->setText("*Teleports behind her*");
-        ui->option2_button->setEnabled(true); // Why is this needed?
+        ui->option2_button->setEnabled(true);
         ui->option3_button->setEnabled(false);
         ui->option3_button->setText("");
         ui->info_button->setEnabled(false);

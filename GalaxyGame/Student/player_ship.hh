@@ -1,13 +1,13 @@
 #ifndef PLAYER_SHIP_HH
 #define PLAYER_SHIP_HH
 
+#include <algorithm>
+#include <iostream>
 #include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QObject>
 #include <QPainter>
-#include <algorithm>
-#include <iostream>
-#include <QGraphicsPixmapItem>
 
 
 class player_ship: public QObject, public QGraphicsPixmapItem {
@@ -15,8 +15,10 @@ Q_OBJECT
 
 public:
     void keyPressEvent(QKeyEvent * event);
-//    QRectF boundingRect() const;
-//    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
+//private:
+//    int x_pos_;
+//    int y_pos_;
 
 signals:
     void shipMoved();

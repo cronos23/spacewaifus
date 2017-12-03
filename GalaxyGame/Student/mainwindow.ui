@@ -184,7 +184,7 @@
        </widget>
       </item>
       <item row="8" column="1" colspan="3">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="distress_label">
         <property name="font">
          <font>
           <family>Serif</family>
@@ -240,7 +240,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="time_label">
         <property name="font">
          <font>
           <family>Serif</family>
@@ -265,6 +265,39 @@
        <widget class="QLCDNumber" name="minutes_LCD">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLabel" name="coords_label">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Current position (x, y)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLCDNumber" name="coordx_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+        <property name="digitCount">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLCDNumber" name="coordy_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+        <property name="digitCount">
+         <number>3</number>
         </property>
        </widget>
       </item>

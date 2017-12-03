@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     Common::utilityInit(time(NULL));
     props_->setProperties();
-    props_->getRunner()->spawnShips(150);
+    props_->getRunner()->spawnShips(100);
 
 
     // Setting up graphics
@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     MainWindowUtility util;
     scene = util.createGalaxies(props_->getGalaxy());
     util.setupShip(*ship_);
+    util.setupTimers(*frameTimer_, *actionTimer_, *gameTimer_);
 
     scene->addItem(ship_);
 
@@ -34,12 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
-
-    frameTimer_->setInterval(16); // Locked refresh rate
-    actionTimer_ ->setInterval(10000); // cargo ship "turn"
-    gameTimer_->setSingleShot(true);
-    gameTimer_->setInterval(360000);
-
 
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
@@ -71,6 +66,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::followShip() {
     ui->graphicsView->ensureVisible(ship_, 100, 100);
+    ui->coordx_LCD->display(ship_->x() / 200);
+    ui->coordy_LCD->display(ship_->y() / 200);
 }
 
 void MainWindow::checkCollision() {
@@ -88,6 +85,8 @@ void MainWindow::checkCollision() {
         enC->exec();
         enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);
+        ui->coordx_LCD->display(ship_->x() / 200);
+        ui->coordy_LCD->display(ship_->y() / 200);
         gameTimer_->setInterval(remaining_time_on_pause_);
         startTimers();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
@@ -135,7 +134,9 @@ void MainWindow::GameOver() {
 void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
     std::ostringstream distressInfo;
     distressInfo << "Distress signal detected!" <<
-                    "\n Location: " << ship->getLocation()->getName();
+                    "\n Location: " << ship->getLocation()->getName() <<
+                    "\n Coordinates: " << ship->getLocation()->getCoordinates().x << ", "
+                 << ship->getLocation()->getCoordinates().y;
     std::string distressInfostr = distressInfo.str();
     ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
 }

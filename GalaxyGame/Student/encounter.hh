@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QWidget>
+#include "mainwindowutility.hh"
 #include "starsystem.hh"
 #include "statistics.hh"
 
@@ -22,11 +23,7 @@ public:
     explicit encounter(QWidget *parent = 0);
     ~encounter();
     void setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem);
-    void rejection();
     void setCorrectAnswer();
-    void infoDialog();
-    void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
-    void successfulEncounter();
 
     void setStatistics(Student::Statistics &stats);
     enum OUTCOME {
@@ -35,10 +32,15 @@ public:
         SavedBribe,
         Lost
     };
+private slots:
+    void rejection();
+    void infoDialog();
+    void firstRightDialog(); //ensimmäisen oikean valinnan jälkeen
+    void successfulEncounter();
+
 private:
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
-    std::shared_ptr<Common::StarSystem> currentStarSystem_;
     Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
 
 };

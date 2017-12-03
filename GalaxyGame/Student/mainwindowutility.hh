@@ -15,8 +15,8 @@ public:
 
     QGraphicsScene *createGalaxies(std::shared_ptr<Student::Galaxy> galaxy);
     void setupShip(player_ship &ship);
-private:
     std::string getWaifuType(Common::StarSystem::ECONOMY_TYPE econ_type);
+private:
 };
 
 #endif // MAINWINDOWUTILITY_HH

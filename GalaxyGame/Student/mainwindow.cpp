@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->centerOn(ship_);
 
     frameTimer_->setInterval(16); // Locked refresh rate
-    actionTimer_ ->setInterval(15000); // cargo ship "turn"
+    actionTimer_ ->setInterval(10000); // cargo ship "turn"
     gameTimer_->setSingleShot(true);
     gameTimer_->setInterval(360000);
 

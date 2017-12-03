@@ -6,7 +6,8 @@ mainmenu::mainmenu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mainmenu),
     mainWin(new MainWindow),
-    controlsWin(new controls)
+    controlsWin(new controls),
+    scoresWin(new highscores)
 {
     ui->setupUi(this);
 
@@ -15,6 +16,9 @@ mainmenu::mainmenu(QWidget *parent) :
 
     QObject::connect(ui->controls_button, &QPushButton::clicked,
              this, &mainmenu::openControls);
+
+    QObject::connect(ui->highscore_button, &QPushButton::clicked,
+                     this, &mainmenu::openScores);
 }
 
 mainmenu::~mainmenu()
@@ -22,6 +26,7 @@ mainmenu::~mainmenu()
     delete ui;
     delete mainWin;
     delete controlsWin;
+    delete scoresWin;
 }
 
 void mainmenu::newGame()
@@ -34,5 +39,10 @@ void mainmenu::newGame()
 void mainmenu::openControls()
 {
     controlsWin->exec();
+}
+
+void mainmenu::openScores()
+{
+    scoresWin->show();
 }
 

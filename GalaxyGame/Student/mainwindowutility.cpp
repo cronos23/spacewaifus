@@ -24,7 +24,8 @@ QGraphicsScene* MainWindowUtility::createGalaxies(std::shared_ptr<Student::Galax
         starSystem->setPos(coords.x * 200, coords.y * 200);
         std::ostringstream toolTipInfo;
         toolTipInfo << currentStarSystem->getName() << "\n"
-                    << "Coordinates: " << currentStarSystem->getCoordinates().x << ", " << currentStarSystem->getCoordinates().y
+                    << "Coordinates: " << coords.x * 200
+                    << ", " << -coords.y * 200
                     << "\n" << "Population: " << currentStarSystem->getPopulation() <<
                        "\n" << "Type of possible waifu: " << getWaifuType(currentStarSystem->getEconomy());
         std::string toolTipInfostr = toolTipInfo.str();
@@ -48,6 +49,13 @@ void MainWindowUtility::setupShip(player_ship &ship) {
     ship.setFocus();
     ship.setPixmap(playerShipPixmap);
     ship.setPos(100, 100);
+}
+
+void MainWindowUtility::setupTimers(QTimer &frametimer, QTimer &actiontimer, QTimer &gametimer) {
+    frametimer.setInterval(16); // Locked refresh rate
+    actiontimer.setInterval(2500); // cargo ship "turn"
+    gametimer.setSingleShot(true);
+    gametimer.setInterval(180000);
 }
 
 std::string MainWindowUtility::getWaifuType(Common::StarSystem::ECONOMY_TYPE econ_type) {

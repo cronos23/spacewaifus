@@ -103,6 +103,9 @@
       </item>
       <item row="4" column="3">
        <widget class="QLCDNumber" name="credits_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="smallDecimalPoint">
          <bool>false</bool>
         </property>
@@ -135,6 +138,9 @@
       </item>
       <item row="5" column="3">
        <widget class="QLCDNumber" name="saved_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="smallDecimalPoint">
          <bool>false</bool>
         </property>
@@ -163,6 +169,9 @@
       </item>
       <item row="6" column="3">
        <widget class="QLCDNumber" name="lost_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="smallDecimalPoint">
          <bool>false</bool>
         </property>
@@ -175,7 +184,7 @@
        </widget>
       </item>
       <item row="8" column="1" colspan="3">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="distress_label">
         <property name="font">
          <font>
           <family>Serif</family>
@@ -207,6 +216,9 @@
       </item>
       <item row="3" column="3">
        <widget class="QLCDNumber" name="score_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
         <property name="digitCount">
          <number>6</number>
         </property>
@@ -228,7 +240,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="time_label">
         <property name="font">
          <font>
           <family>Serif</family>
@@ -243,10 +255,54 @@
        </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QLCDNumber" name="seconds_LCD"/>
+       <widget class="QLCDNumber" name="seconds_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QLCDNumber" name="minutes_LCD"/>
+       <widget class="QLCDNumber" name="minutes_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLabel" name="coords_label">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Current position (x, y)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLCDNumber" name="coordx_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+        <property name="smallDecimalPoint">
+         <bool>false</bool>
+        </property>
+        <property name="digitCount">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLCDNumber" name="coordy_LCD">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(33, 33, 33);</string>
+        </property>
+        <property name="digitCount">
+         <number>5</number>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

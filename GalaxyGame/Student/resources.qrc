@@ -6,4 +6,7 @@
         <file>images/starship_teal.png</file>
         <file>images/starship_yellow.png</file>
     </qresource>
+    <qresource prefix="/leaderboard">
+        <file>leaderboard.txt</file>
+    </qresource>
 </RCC>

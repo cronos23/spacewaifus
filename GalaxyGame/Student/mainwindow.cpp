@@ -19,14 +19,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     Common::utilityInit(time(NULL));
     props_->setProperties();
-    props_->getRunner()->spawnShips(150);
+    props_->getRunner()->spawnShips(100);
 
 
     // Setting up graphics
     QGraphicsScene * scene;
     MainWindowUtility util;
+
     scene = util.createGalaxies(props_->getGalaxy());
+
     util.setupShip(*ship_);
+    util.setupTimers(*frameTimer_, *actionTimer_, *gameTimer_);
 
     scene->addItem(ship_);
 
@@ -35,12 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setScene(scene);
     ui->graphicsView->centerOn(ship_);
 
-    frameTimer_->setInterval(16); // Locked refresh rate
-    actionTimer_ ->setInterval(10000); // cargo ship "turn"
-    gameTimer_->setSingleShot(true);
-    gameTimer_->setInterval(360000);
-
-
     QObject::connect(ship_, &player_ship::shipMoved, this, &MainWindow::followShip);
     QObject::connect(ship_, &player_ship::shipCollides, this, &MainWindow::checkCollision);
     QObject::connect(actionTimer_, &QTimer::timeout, props_, &GameProperties::tick);
@@ -48,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(gameTimer_, &QTimer::timeout, this, &MainWindow::GameOver);
     QObject::connect(props_->getHandler(), &Student::EventHandler::distressToggleOn,
                      this, &MainWindow::reactToDistress);
-//    QObject::connect(props_->getHandler(), &Student::EventHandler::ExecutionException, this, &MainWindow::testPrint);
 
     ui->credits_LCD->display(stats_->getCreditBalance());
     ui->lost_LCD->display((int) stats_->getLostShips());
@@ -71,6 +67,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::followShip() {
     ui->graphicsView->ensureVisible(ship_, 100, 100);
+    ui->coordx_LCD->display(ship_->x());
+    ui->coordy_LCD->display(-ship_->y());
 }
 
 void MainWindow::checkCollision() {
@@ -88,6 +86,8 @@ void MainWindow::checkCollision() {
         enC->exec();
         enC->setStatistics(*stats_);
         ship_->moveBy(100, 100);
+        ui->coordx_LCD->display(ship_->x());
+        ui->coordy_LCD->display(-ship_->y());
         gameTimer_->setInterval(remaining_time_on_pause_);
         startTimers();
         props_->getGalaxy()->removeShip(props_->getGalaxy()->getShipsInStarSystem(starSystemptr->getName())[0]);
@@ -135,7 +135,9 @@ void MainWindow::GameOver() {
 void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
     std::ostringstream distressInfo;
     distressInfo << "Distress signal detected!" <<
-                    "\n Location: " << ship->getLocation()->getName();
+                    "\n Location: " << ship->getLocation()->getName() <<
+                    "\n Coordinates: " << ship->getLocation()->getCoordinates().x * 200 << ", "
+                 << ship->getLocation()->getCoordinates().y * -200;
     std::string distressInfostr = distressInfo.str();
     ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
 }

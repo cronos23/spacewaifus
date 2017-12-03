@@ -9,9 +9,28 @@
 #include "starsystem.hh"
 #include "statistics.hh"
 
-
+/**
+ * @file
+ * @brief Encounter with waifu/spaceship.
+ */
 
 namespace Ui {
+
+/**
+ * @brief Encounter triggers when the player flies into a star system that houses at least one waifu (cargo ship).
+ *
+ * When triggered, encounter opens as an exec and stops all of mainWindows timers. This means that while
+ * an encounter is open, no other part of the game is being updated.
+ *
+ * When an encounter starts, the player is presented with a conversation dialog with different options.
+ * The first set of responses are the same for every encounter. If the right option is chosen, the player is
+ * presented with more options, which are determined by the star systems waifu type.
+ *
+ * After the player chooses a dialog option from the second set of options, they are presented with feedback on
+ * the success of their seduction attempts. When the player chooses to leave by pressing the only active button
+ * in the last screen, the encounter closes and lets mainWindow continue operation.
+ */
+
 class encounter;
 }
 
@@ -22,9 +41,17 @@ class encounter : public QDialog
 public:
     explicit encounter(QWidget *parent = 0);
     ~encounter();
-    void setStarSystem(std::shared_ptr<Common::StarSystem> givenStarSystem);
+    /**
+     * @brief Sets the correct waifu_type_ private attribute for the current encounter.
+     * @param The waifu type is determined by accessing the ECONOMY_TYPE of the given star system.
+     */
+    void setWaifuType(std::shared_ptr<Common::StarSystem> givenStarSystem);
+    /**
+     * @brief
+     * @param stats
+     */
 
-    void setStatistics(Student::Statistics &stats);
+    void updateStatistics(Student::Statistics &stats);
     enum OUTCOME {
         SavedNormal,
         SavedWealthy,

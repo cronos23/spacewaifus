@@ -38,8 +38,8 @@ public:
 private:
     Ui::encounter *ui;
     encounter::OUTCOME outcome_;
+    std::shared_ptr<Common::StarSystem> currentStarSystem_;
     Common::StarSystem::ECONOMY_TYPE currentStarSystemEconomy_;
-
 
 };
 

@@ -25,7 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // Setting up graphics
     QGraphicsScene * scene;
     MainWindowUtility util;
+
     scene = util.createGalaxies(props_->getGalaxy());
+
     util.setupShip(*ship_);
     util.setupTimers(*frameTimer_, *actionTimer_, *gameTimer_);
 
@@ -135,7 +137,7 @@ void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
     distressInfo << "Distress signal detected!" <<
                     "\n Location: " << ship->getLocation()->getName() <<
                     "\n Coordinates: " << ship->getLocation()->getCoordinates().x * 200 << ", "
-                 << ship->getLocation()->-getCoordinates().y * 200;
+                 << ship->getLocation()->getCoordinates().y * -200;
     std::string distressInfostr = distressInfo.str();
     ui->distress_signals->addItem(QString::fromStdString(distressInfostr));
 }

@@ -33,7 +33,7 @@ highscores::~highscores()
 std::vector<struct highscores::playerScore> highscores::readFile() {
     std::vector<playerScore> scoreVector;
     std::string currentrow;
-    std::ifstream scoreBoard("leaderboard.txt");
+    std::ifstream scoreBoard("Student/leaderboard.txt");
     if (!scoreBoard) {
         throw Common::IoException("leaderboard.txt missing");
     }
@@ -84,7 +84,7 @@ void highscores::writeToFile() {
     top10_.pop_back();
     top10_.push_back(nameScoreStruct);
     std::sort(top10_.begin(), top10_.end(), highscores::less_than_score);
-    std::ofstream outputFile("leaderboard.txt");
+    std::ofstream outputFile("Student/leaderboard.txt");
     for(auto vectorStruct:top10_) {
         outputFile << vectorStruct.name << vectorStruct.score << "\n";
     }

@@ -140,7 +140,7 @@
       <set>Qt::AlignCenter</set>
      </property>
      <property name="placeholderText">
-      <string/>
+      <string>AAA</string>
      </property>
     </widget>
    </item>

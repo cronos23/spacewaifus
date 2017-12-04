@@ -132,8 +132,8 @@ void MainWindow::GameOver() {
     gameOver->setPoints(stats_->getPoints());
     gameOver->setDatedShips(stats_->getSavedShips());
     gameOver->setRejections(stats_->getLostShips());
-    this->close();
     gameOver->show();
+    this->close();
 }
 
 void MainWindow::reactToDistress(std::shared_ptr<Common::Ship> ship) {
